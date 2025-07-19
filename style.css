@@ -350,19 +350,21 @@ body {
 #clientsTable { table-layout: fixed; }
 #clientsTable th, #clientsTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #clientsTable thead th:nth-child(1), #clientsTable tbody td:nth-child(1) { width: 80px; }
-#clientsTable thead th:nth-child(2), #clientsTable tbody td:nth-child(2) { width: 528px; } /* Preferimos el ancho mayor */
-#clientsTable thead th:nth-child(3), #clientsTable tbody td:nth-child(3) { width: 120px; }
-#clientsTable thead th:nth-child(4), #clientsTable tbody td:nth-child(4) { width: 264px; }
-#clientsTable thead th:nth-child(5), #clientsTable tbody td:nth-child(5) { width: 528px; }
+#clientsTable thead th:nth-child(2), #clientsTable tbody td:nth-child(2) { width: 330px; } /* Preferimos el ancho mayor */
+#clientsTable thead th:nth-child(3), #clientsTable tbody td:nth-child(3) { width: 130px; }
+#clientsTable thead th:nth-child(4), #clientsTable tbody td:nth-child(4) { width: 130px; }
+#clientsTable thead th:nth-child(5), #clientsTable tbody td:nth-child(5) { width: 130px; }
+#clientsTable thead th:nth-child(6), #clientsTable tbody td:nth-child(6) { width: 330px; }
 
 /* Tabla de proveedores */
 #proveedoresTable { table-layout: fixed; }
 #proveedoresTable th, #proveedoresTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #proveedoresTable thead th:nth-child(1), #proveedoresTable tbody td:nth-child(1) { width: 80px; }
-#proveedoresTable thead th:nth-child(2), #proveedoresTable tbody td:nth-child(2) { width: 528px; }
-#proveedoresTable thead th:nth-child(3), #proveedoresTable tbody td:nth-child(3) { width: 120px; }
-#proveedoresTable thead th:nth-child(4), #proveedoresTable tbody td:nth-child(4) { width: 264px; }
-#proveedoresTable thead th:nth-child(5), #proveedoresTable tbody td:nth-child(5) { width: 528px; }
+#proveedoresTable thead th:nth-child(2), #proveedoresTable tbody td:nth-child(2) { width: 330px; }
+#proveedoresTable thead th:nth-child(3), #proveedoresTable tbody td:nth-child(3) { width: 130px; }
+#proveedoresTable thead th:nth-child(4), #proveedoresTable tbody td:nth-child(4) { width: 130px; }
+#proveedoresTable thead th:nth-child(5), #proveedoresTable tbody td:nth-child(5) { width: 130px; }
+#proveedoresTable thead th:nth-child(6), #proveedoresTable tbody td:nth-child(6) { width: 330px; }
 
 /* Tabla de operarios */
 #operariosTable th, #operariosTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
