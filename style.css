@@ -331,38 +331,182 @@ body {
    6. TABLAS - CLIENTES, PROVEEDORES, ETC.
    -------------------------------------- */
 /* --- General --- */
-.table-responsive { border-radius: 10px; overflow: hidden; }
-.table { margin-bottom: 0; background-color: #fff; }
-.table th, .table td { padding: 2px 20px; border-top: 1px solid #eee; color: #333; vertical-align: middle; font-size: 12px; }
-.table thead th {
-    font-size: 10px;
-    background-color: #f8f9fa;
-    color: #666;
-    font-weight: 600;
-    border-bottom: 1px solid #ddd;
-    text-transform: uppercase;
-    font-size: 12px;
+.table-responsive { 
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
 }
-.table-hover tbody tr:hover { background-color: #f5f5f5; }
+.table { 
+    margin-bottom: 0; 
+    background-color: #fff; 
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.table th, .table td { 
+    padding: 12px 20px; 
+    border-top: 1px solid #eee; 
+    color: #333; 
+    vertical-align: middle; 
+    font-size: 13px;
+    transition: background-color 0.2s ease;
+}
+.table thead th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    font-weight: 600;
+    border-bottom: 2px solid #5a6fd8;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.table-hover tbody tr:hover { 
+    background-color: #f8f9fc; 
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
 /* --- Específicos por tabla --- */
 
 /* Tabla de clientes */
-#clientsTable { table-layout: fixed; }
-#clientsTable th, #clientsTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-#clientsTable thead th:nth-child(1), #clientsTable tbody td:nth-child(1) { width: 80px; }
-#clientsTable thead th:nth-child(2), #clientsTable tbody td:nth-child(2) { width: 528px; } /* Preferimos el ancho mayor */
-#clientsTable thead th:nth-child(3), #clientsTable tbody td:nth-child(3) { width: 120px; }
-#clientsTable thead th:nth-child(4), #clientsTable tbody td:nth-child(4) { width: 264px; }
-#clientsTable thead th:nth-child(5), #clientsTable tbody td:nth-child(5) { width: 528px; }
+#clientsTable { 
+    table-layout: fixed; 
+    border-radius: 12px;
+    overflow: hidden;
+}
+#clientsTable th, #clientsTable td { 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+#clientsTable th:first-child, #clientsTable td:first-child { border-left: none; }
+#clientsTable thead th:nth-child(1), #clientsTable tbody td:nth-child(1) { 
+    width: 80px; 
+    text-align: center;
+    font-weight: 600;
+}
+#clientsTable thead th:nth-child(2), #clientsTable tbody td:nth-child(2) { 
+    width: 320px; 
+    font-weight: 500;
+    color: #2c3e50;
+}
+#clientsTable thead th:nth-child(3), #clientsTable tbody td:nth-child(3) { 
+    width: 120px; 
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+}
+#clientsTable thead th:nth-child(4), #clientsTable tbody td:nth-child(4) { 
+    width: 120px; 
+    text-align: center;
+    color: #3498db;
+}
+#clientsTable thead th:nth-child(5), #clientsTable tbody td:nth-child(5) { 
+    width: 120px; 
+    text-align: center;
+    color: #3498db;
+}
+#clientsTable thead th:nth-child(6), #clientsTable tbody td:nth-child(6) { 
+    width: 320px; 
+    color: #27ae60;
+}
 
 /* Tabla de proveedores */
-#proveedoresTable { table-layout: fixed; }
-#proveedoresTable th, #proveedoresTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-#proveedoresTable thead th:nth-child(1), #proveedoresTable tbody td:nth-child(1) { width: 80px; }
-#proveedoresTable thead th:nth-child(2), #proveedoresTable tbody td:nth-child(2) { width: 528px; }
-#proveedoresTable thead th:nth-child(3), #proveedoresTable tbody td:nth-child(3) { width: 120px; }
-#proveedoresTable thead th:nth-child(4), #proveedoresTable tbody td:nth-child(4) { width: 264px; }
-#proveedoresTable thead th:nth-child(5), #proveedoresTable tbody td:nth-child(5) { width: 528px; }
+#proveedoresTable { 
+    table-layout: fixed; 
+    border-radius: 12px;
+    overflow: hidden;
+}
+#proveedoresTable th, #proveedoresTable td { 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+#proveedoresTable th:first-child, #proveedoresTable td:first-child { border-left: none; }
+#proveedoresTable thead th:nth-child(1), #proveedoresTable tbody td:nth-child(1) { 
+    width: 80px; 
+    text-align: center;
+    font-weight: 600;
+}
+#proveedoresTable thead th:nth-child(2), #proveedoresTable tbody td:nth-child(2) { 
+    width: 320px; 
+    font-weight: 500;
+    color: #2c3e50;
+}
+#proveedoresTable thead th:nth-child(3), #proveedoresTable tbody td:nth-child(3) { 
+    width: 120px; 
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+}
+#proveedoresTable thead th:nth-child(4), #proveedoresTable tbody td:nth-child(4) { 
+    width: 120px; 
+    text-align: center;
+    color: #3498db;
+}
+#proveedoresTable thead th:nth-child(5), #proveedoresTable tbody td:nth-child(5) { 
+    width: 120px; 
+    text-align: center;
+    color: #3498db;
+}
+#proveedoresTable thead th:nth-child(6), #proveedoresTable tbody td:nth-child(6) { 
+    width: 320px; 
+    color: #27ae60;
+}
+
+/* --- Efectos adicionales para tablas de clientes y proveedores --- */
+#clientsTable tbody tr, #proveedoresTable tbody tr {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#clientsTable tbody tr:nth-child(even), #proveedoresTable tbody tr:nth-child(even) {
+    background-color: #fafbfc;
+}
+
+#clientsTable tbody tr:hover, #proveedoresTable tbody tr:hover {
+    background: linear-gradient(135deg, #e8f4fd 0%, #f1f8ff 100%);
+    border-left: 4px solid #3498db;
+}
+
+/* Estilos para celdas específicas */
+#clientsTable td:nth-child(1), #proveedoresTable td:nth-child(1) {
+    background-color: rgba(52, 152, 219, 0.1);
+    font-weight: 700;
+    color: #2980b9;
+}
+
+/* Indicadores de estado para emails y teléfonos */
+#clientsTable td:nth-child(4):not(:empty):before, 
+#clientsTable td:nth-child(5):not(:empty):before,
+#proveedoresTable td:nth-child(4):not(:empty):before, 
+#proveedoresTable td:nth-child(5):not(:empty):before {
+    content: "📞 ";
+    font-size: 10px;
+    margin-right: 4px;
+}
+
+#clientsTable td:nth-child(6):not(:empty):before,
+#proveedoresTable td:nth-child(6):not(:empty):before {
+    content: "✉️ ";
+    font-size: 10px;
+    margin-right: 4px;
+}
+
+/* Animación de carga para las tablas */
+@keyframes tableLoadFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#clientsTable, #proveedoresTable {
+    animation: tableLoadFadeIn 0.6s ease-out;
+}
 
 /* Tabla de operarios */
 #operariosTable th, #operariosTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
