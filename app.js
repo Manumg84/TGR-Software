@@ -3031,36 +3031,36 @@ function getNextClientNumero() {
 
 // Cuando abras el modal para CREAR cliente
 document.getElementById('btnAbrirModalCliente').addEventListener('click', function() {
-    document.getElementById('clientNumero').value = cliente.id; // <-- ¡Esto es clave!
+    document.getElementById('clientNumero').value = client.id; // <-- ¡Esto es clave!
     document.getElementById('clientNumero').readOnly = true;
-    document.getElementById('clientNameOrCompany').value = cliente.nameOrCompany || '';
-    document.getElementById('clientCifNif').value = cliente.cifNif || '';
-    document.getElementById('clientAddress').value = cliente.address || '';
-    document.getElementById('clientCity').value = cliente.city || '';
-    document.getElementById('clientProvince').value = cliente.province || '';
-    document.getElementById('clientPostalCode').value = cliente.postalCode || '';
-    document.getElementById('clientPhone1').value = cliente.phone1 || '';
-    document.getElementById('clientPhone2').value = cliente.phone2 || '';
-    document.getElementById('clientEmail').value = cliente.email || '';
-    document.getElementById('clientObservations').value = cliente.observations || '';
+    document.getElementById('clientNameOrCompany').value = client.nameOrCompany || '';
+    document.getElementById('clientCifNif').value = client.cifNif || '';
+    document.getElementById('clientAddress').value = client.address || '';
+    document.getElementById('clientCity').value = client.city || '';
+    document.getElementById('clientProvince').value = client.province || '';
+    document.getElementById('clientPostalCode').value = client.postalCode || '';
+    document.getElementById('clientPhone1').value = client.phone1 || '';
+    document.getElementById('clientPhone2').value = client.phone2 || '';
+    document.getElementById('clientEmail').value = client.email || '';
+    document.getElementById('clientObservations').value = client.observations || '';
     // Limpia otros campos del formulario aquí si es necesario
     // Muestra el modal
 });
 
 // Cuando abras el modal para EDITAR cliente
 function abrirModalEditarCliente(cliente) {
-    document.getElementById('clientNumero').value = cliente.id; // <-- ¡Esto es clave!
+    document.getElementById('clientNumero').value = client.id; // <-- ¡Esto es clave!
     document.getElementById('clientNumero').readOnly = true;
-    document.getElementById('clientNameOrCompany').value = cliente.nameOrCompany || '';
-    document.getElementById('clientCifNif').value = cliente.cifNif || '';
-    document.getElementById('clientAddress').value = cliente.address || '';
-    document.getElementById('clientCity').value = cliente.city || '';
-    document.getElementById('clientProvince').value = cliente.province || '';
-    document.getElementById('clientPostalCode').value = cliente.postalCode || '';
-    document.getElementById('clientPhone1').value = cliente.phone1 || '';
-    document.getElementById('clientPhone2').value = cliente.phone2 || '';
-    document.getElementById('clientEmail').value = cliente.email || '';
-    document.getElementById('clientObservations').value = cliente.observations || '';
+    document.getElementById('clientNameOrCompany').value = client.nameOrCompany || '';
+    document.getElementById('clientCifNif').value = client.cifNif || '';
+    document.getElementById('clientAddress').value = client.address || '';
+    document.getElementById('clientCity').value = client.city || '';
+    document.getElementById('clientProvince').value = client.province || '';
+    document.getElementById('clientPostalCode').value = client.postalCode || '';
+    document.getElementById('clientPhone1').value = client.phone1 || '';
+    document.getElementById('clientPhone2').value = client.phone2 || '';
+    document.getElementById('clientEmail').value = client.email || '';
+    document.getElementById('clientObservations').value = client.observations || '';
     // Rellena el resto de campos...
     // Muestra el modal
 }
