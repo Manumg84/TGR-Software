@@ -412,7 +412,11 @@
                         <input type="hidden" id="clientMode"> <!-- To store 'create', 'view', 'edit' -->
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="clientNameOrCompany" class="form-label text-muted">Nombre o Empresa</label>
+                                <label for="clientId" class="form-label">Nº Cliente</label>
+                                <input type="text" class="form-control" id="clientId" name="clientId" readonly>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="clientNumero" class="form-label text-muted">Nombre o Empresa</label>
                                 <input type="text" class="form-control" id="clientNameOrCompany" required>
                             </div>
                             <div class="col-md-6 mb-3">
