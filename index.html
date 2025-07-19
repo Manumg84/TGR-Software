@@ -13,6 +13,7 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/modal-fix.css">
 </head>
 <body>
     <div class="d-flex" id="wrapper">
@@ -410,6 +411,12 @@
                     <form id="clientForm" class="p-3 border rounded">
                         <input type="hidden" id="clientId">
                         <input type="hidden" id="clientMode"> <!-- To store 'create', 'view', 'edit' -->
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="clientNumber" class="form-label text-muted">Número de Cliente</label>
+                                <input type="text" class="form-control" id="clientNumber" readonly style="background-color: #f8f9fa;">
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="clientNameOrCompany" class="form-label text-muted">Nombre o Empresa</label>
@@ -1008,6 +1015,8 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Local Bootstrap Modal fix for blocked CDN -->
+    <script src="assets/modal-fix.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

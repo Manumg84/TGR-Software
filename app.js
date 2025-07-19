@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
+                                <th scope="col">Número Cliente</th>
                                 <th scope="col">Nombre/Empresa</th>
                                 <th scope="col">CIF/NIF</th>
                                 <th scope="col">Teléfono 1</th>
@@ -949,6 +950,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let clients = JSON.parse(localStorage.getItem('tallerAppClients')) || [];
     let nextClientId = parseInt(localStorage.getItem('nextClientId')) || 1;
+    let nextClientNumber = parseInt(localStorage.getItem('nextClientNumber')) || 1;
 
     let proveedores = JSON.parse(localStorage.getItem('tallerAppProveedores')) || [];
     let nextProveedorId = parseInt(localStorage.getItem('nextProveedorId')) || 1;
@@ -994,35 +996,64 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (clients.length === 0) {
         clients = [
-            {"id":"1","nameOrCompany":"Innovatech Solutions","cifNif":"B12345678","address":"Calle Falsa 123","city":"Madrid","province":"Madrid","postalCode":"28001","phone1":"912345678","phone2":"","email":"contacto@innovatech.es","observations":""},
-            {"id":"2","nameOrCompany":"Arte y Diseño Gráfico SL","cifNif":"B87654321","address":"Avenida de la Creatividad 45","city":"Barcelona","province":"Barcelona","postalCode":"08002","phone1":"934567890","phone2":"","email":"info@arteydiseño.com","observations":"Cliente habitual para material de oficina."},
-            {"id":"3","nameOrCompany":"Juan Pérez García","cifNif":"12345678A","address":"Plaza Mayor 1","city":"Sevilla","province":"Sevilla","postalCode":"41001","phone1":"955678901","phone2":"","email":"juan.perez@email.com","observations":"Fontanero"},
-            {"id":"4","nameOrCompany":"María López Martínez","cifNif":"87654321B","address":"Paseo del Prado 10","city":"Madrid","province":"Madrid","postalCode":"28014","phone1":"918765432","phone2":"612345678","email":"maria.lopez@email.com","observations":""},
-            {"id":"5","nameOrCompany":"Global Imports SA","cifNif":"A08987654","address":"Carrer de Sants 250","city":"Barcelona","province":"Barcelona","postalCode":"08028","phone1":"933321122","phone2":"","email":"pedidos@globalimports.es","observations":"Importador de componentes electrónicos."},
-            {"id":"6","nameOrCompany":"Construcciones Roca Fuerte","cifNif":"B41234567","address":"Polígono Industrial La Red 7","city":"Alcalá de Guadaíra","province":"Sevilla","postalCode":"41500","phone1":"955010203","phone2":"","email":"admin@rocafuerte.com","observations":""},
-            {"id":"7","nameOrCompany":"Lucía Fernández","cifNif":"23456789C","address":"Gran Vía 22","city":"Bilbao","province":"Vizcaya","postalCode":"48009","phone1":"944123456","phone2":"","email":"lucia.fernandez@email.com","observations":""},
-            {"id":"8","nameOrCompany":"Productos de Castilla y León S.A.","cifNif":"A47876543","address":"Polígono San Cristóbal, Calle Oro 5","city":"Valladolid","province":"Valladolid","postalCode":"47012","phone1":"983012345","phone2":"","email":"info@productoscyl.com","observations":""},
-            {"id":"9","nameOrCompany":"David García","cifNif":"34567890D","address":"Calle Larios 5","city":"Málaga","province":"Málaga","postalCode":"29015","phone1":"952123456","phone2":"","email":"david.garcia@email.com","observations":""},
-            {"id":"10","nameOrCompany":"Laura Sánchez","cifNif":"45678901E","address":"Avenida de la Constitución 18","city":"Valencia","province":"Valencia","postalCode":"46001","phone1":"963123456","phone2":"","email":"laura.sanchez@email.com","observations":""},
-            {"id":"11","nameOrCompany":"Exportaciones del Sur S.A.","cifNif":"A29876543","address":"Muelle Uno, Local 15","city":"Málaga","province":"Málaga","postalCode":"29016","phone1":"952001122","phone2":"","email":"info@exportsur.es","observations":""},
-            {"id":"12","nameOrCompany":"Catering Delicias","cifNif":"B46123987","address":"Calle Colón 50","city":"Valencia","province":"Valencia","postalCode":"46004","phone1":"963543210","phone2":"","email":"pedidos@cateringdelicias.com","observations":""},
-            {"id":"13","nameOrCompany":"Sofía Romero","cifNif":"56789012F","address":"Plaza de la Catedral 3","city":"Murcia","province":"Murcia","postalCode":"30001","phone1":"968123456","phone2":"","email":"sofia.romero@email.com","observations":""},
-            {"id":"14","nameOrCompany":"Mantenimientos Integrales del Sureste","cifNif":"B30987654","address":"Avenida Juan Carlos I 30","city":"Murcia","province":"Murcia","postalCode":"30009","phone1":"968987654","phone2":"","email":"contacto@misureste.com","observations":""},
-            {"id":"15","nameOrCompany":"Pedro Gutiérrez","cifNif":"67890123G","address":"Paseo de la Independencia 25","city":"Zaragoza","province":"Zaragoza","postalCode":"50001","phone1":"976123456","phone2":"","email":"pedro.gutierrez@email.com","observations":""},
-            {"id":"16","nameOrCompany":"Logística Aragonesa S.L.","cifNif":"B50123456","address":"Plataforma Logística de Zaragoza (PLAZA)","city":"Zaragoza","province":"Zaragoza","postalCode":"50197","phone1":"976654321","phone2":"","email":"trafico@logisticaaragonesa.es","observations":""},
-            {"id":"17","nameOrCompany":"Elena Jiménez","cifNif":"78901234H","address":"Calle Santiago 19","city":"Valladolid","province":"Valladolid","postalCode":"47001","phone1":"983123456","phone2":"","email":"elena.jimenez@email.com","observations":""},
-            {"id":"18","nameOrCompany":"Productos de Castilla y León S.A.","cifNif":"A47876543","address":"Polígono San Cristóbal, Calle Oro 5","city":"Valladolid","province":"Valladolid","postalCode":"47012","phone1":"983012345","phone2":"","email":"info@productoscyl.com","observations":""},
-            {"id":"19","nameOrCompany":"Daniel Navarro","cifNif":"90123456J","address":"Praza do Obradoiro s/n","city":"Santiago de Compostela","province":"A Coruña","postalCode":"15705","phone1":"981123456","phone2":"","email":"daniel.navarro@email.com","observations":""},
-            {"id":"20","nameOrCompany":"Conservas Gallegas Rías Altas","cifNif":"B15654321","address":"Polígono de Sabón, Parcela 10","city":"Arteixo","province":"A Coruña","postalCode":"15142","phone1":"981601234","phone2":"","email":"pedidos@conservasriasaltas.com","observations":""},
-            {"id":"21","nameOrCompany":"Isabel Torres","cifNif":"01234567K","address":"Calle San Fernando 40","city":"Santander","province":"Cantabria","postalCode":"39010","phone1":"942123456","phone2":"","email":"isabel.torres@email.com","observations":""},
-            {"id":"22","nameOrCompany":"Transportes del Norte S.L.","cifNif":"B39123456","address":"Puerto de Santander, Raos","city":"Santander","province":"Cantabria","postalCode":"39011","phone1":"942345678","phone2":"","email":"oficina@transnorte.es","observations":""},
-            {"id":"23","nameOrCompany":"Javier Ruiz","cifNif":"11223344L","address":"Avenida de la Libertad 2","city":"Donostia-San Sebastián","province":"Guipúzcoa","postalCode":"20004","phone1":"943123456","phone2":"","email":"javier.ruiz@email.com","observations":""},
-            {"id":"24","nameOrCompany":"Quesos del País Vasco","cifNif":"B20987654","address":"Barrio Osinaga 15","city":"Hernani","province":"Guipúzcoa","postalCode":"20130","phone1":"943556677","phone2":"","email":"info@quesosvascos.com","observations":""},
-            {"id":"25","nameOrCompany":"Carmen Moreno","cifNif":"22334455M","address":"Calle Mayor 33","city":"Pamplona","province":"Navarra","postalCode":"31001","phone1":"948123456","phone2":"","email":"carmen.moreno@email.com","observations":""},
-            {"id":"26","nameOrCompany":"Mecanizados de Precisión Navarra S.L.","cifNif":"B31654987","address":"Polígono Industrial de Landaben, Calle A","city":"Pamplona","province":"Navarra","postalCode":"31012","phone1":"948765432","phone2":"","email":"info@mecanizadosnavarra.com","observations":"Cliente con requerimientos técnicos muy específicos."}
+            {"id":"1","clientNumber":"C-001","nameOrCompany":"Innovatech Solutions","cifNif":"B12345678","address":"Calle Falsa 123","city":"Madrid","province":"Madrid","postalCode":"28001","phone1":"912345678","phone2":"","email":"contacto@innovatech.es","observations":""},
+            {"id":"2","clientNumber":"C-002","nameOrCompany":"Arte y Diseño Gráfico SL","cifNif":"B87654321","address":"Avenida de la Creatividad 45","city":"Barcelona","province":"Barcelona","postalCode":"08002","phone1":"934567890","phone2":"","email":"info@arteydiseño.com","observations":"Cliente habitual para material de oficina."},
+            {"id":"3","clientNumber":"C-003","nameOrCompany":"Juan Pérez García","cifNif":"12345678A","address":"Plaza Mayor 1","city":"Sevilla","province":"Sevilla","postalCode":"41001","phone1":"955678901","phone2":"","email":"juan.perez@email.com","observations":"Fontanero"},
+            {"id":"4","clientNumber":"C-004","nameOrCompany":"María López Martínez","cifNif":"87654321B","address":"Paseo del Prado 10","city":"Madrid","province":"Madrid","postalCode":"28014","phone1":"918765432","phone2":"612345678","email":"maria.lopez@email.com","observations":""},
+            {"id":"5","clientNumber":"C-005","nameOrCompany":"Global Imports SA","cifNif":"A08987654","address":"Carrer de Sants 250","city":"Barcelona","province":"Barcelona","postalCode":"08028","phone1":"933321122","phone2":"","email":"pedidos@globalimports.es","observations":"Importador de componentes electrónicos."},
+            {"id":"6","clientNumber":"C-006","nameOrCompany":"Construcciones Roca Fuerte","cifNif":"B41234567","address":"Polígono Industrial La Red 7","city":"Alcalá de Guadaíra","province":"Sevilla","postalCode":"41500","phone1":"955010203","phone2":"","email":"admin@rocafuerte.com","observations":""},
+            {"id":"7","clientNumber":"C-007","nameOrCompany":"Lucía Fernández","cifNif":"23456789C","address":"Gran Vía 22","city":"Bilbao","province":"Vizcaya","postalCode":"48009","phone1":"944123456","phone2":"","email":"lucia.fernandez@email.com","observations":""},
+            {"id":"8","clientNumber":"C-008","nameOrCompany":"Productos de Castilla y León S.A.","cifNif":"A47876543","address":"Polígono San Cristóbal, Calle Oro 5","city":"Valladolid","province":"Valladolid","postalCode":"47012","phone1":"983012345","phone2":"","email":"info@productoscyl.com","observations":""},
+            {"id":"9","clientNumber":"C-009","nameOrCompany":"David García","cifNif":"34567890D","address":"Calle Larios 5","city":"Málaga","province":"Málaga","postalCode":"29015","phone1":"952123456","phone2":"","email":"david.garcia@email.com","observations":""},
+            {"id":"10","clientNumber":"C-010","nameOrCompany":"Laura Sánchez","cifNif":"45678901E","address":"Avenida de la Constitución 18","city":"Valencia","province":"Valencia","postalCode":"46001","phone1":"963123456","phone2":"","email":"laura.sanchez@email.com","observations":""},
+            {"id":"11","clientNumber":"C-011","nameOrCompany":"Exportaciones del Sur S.A.","cifNif":"A29876543","address":"Muelle Uno, Local 15","city":"Málaga","province":"Málaga","postalCode":"29016","phone1":"952001122","phone2":"","email":"info@exportsur.es","observations":""},
+            {"id":"12","clientNumber":"C-012","nameOrCompany":"Catering Delicias","cifNif":"B46123987","address":"Calle Colón 50","city":"Valencia","province":"Valencia","postalCode":"46004","phone1":"963543210","phone2":"","email":"pedidos@cateringdelicias.com","observations":""},
+            {"id":"13","clientNumber":"C-013","nameOrCompany":"Sofía Romero","cifNif":"56789012F","address":"Plaza de la Catedral 3","city":"Murcia","province":"Murcia","postalCode":"30001","phone1":"968123456","phone2":"","email":"sofia.romero@email.com","observations":""},
+            {"id":"14","clientNumber":"C-014","nameOrCompany":"Mantenimientos Integrales del Sureste","cifNif":"B30987654","address":"Avenida Juan Carlos I 30","city":"Murcia","province":"Murcia","postalCode":"30009","phone1":"968987654","phone2":"","email":"contacto@misureste.com","observations":""},
+            {"id":"15","clientNumber":"C-015","nameOrCompany":"Pedro Gutiérrez","cifNif":"67890123G","address":"Paseo de la Independencia 25","city":"Zaragoza","province":"Zaragoza","postalCode":"50001","phone1":"976123456","phone2":"","email":"pedro.gutierrez@email.com","observations":""},
+            {"id":"16","clientNumber":"C-016","nameOrCompany":"Logística Aragonesa S.L.","cifNif":"B50123456","address":"Plataforma Logística de Zaragoza (PLAZA)","city":"Zaragoza","province":"Zaragoza","postalCode":"50197","phone1":"976654321","phone2":"","email":"trafico@logisticaaragonesa.es","observations":""},
+            {"id":"17","clientNumber":"C-017","nameOrCompany":"Elena Jiménez","cifNif":"78901234H","address":"Calle Santiago 19","city":"Valladolid","province":"Valladolid","postalCode":"47001","phone1":"983123456","phone2":"","email":"elena.jimenez@email.com","observations":""},
+            {"id":"18","clientNumber":"C-018","nameOrCompany":"Productos de Castilla y León S.A.","cifNif":"A47876543","address":"Polígono San Cristóbal, Calle Oro 5","city":"Valladolid","province":"Valladolid","postalCode":"47012","phone1":"983012345","phone2":"","email":"info@productoscyl.com","observations":""},
+            {"id":"19","clientNumber":"C-019","nameOrCompany":"Daniel Navarro","cifNif":"90123456J","address":"Praza do Obradoiro s/n","city":"Santiago de Compostela","province":"A Coruña","postalCode":"15705","phone1":"981123456","phone2":"","email":"daniel.navarro@email.com","observations":""},
+            {"id":"20","clientNumber":"C-020","nameOrCompany":"Conservas Gallegas Rías Altas","cifNif":"B15654321","address":"Polígono de Sabón, Parcela 10","city":"Arteixo","province":"A Coruña","postalCode":"15142","phone1":"981601234","phone2":"","email":"pedidos@conservasriasaltas.com","observations":""},
+            {"id":"21","clientNumber":"C-021","nameOrCompany":"Isabel Torres","cifNif":"01234567K","address":"Calle San Fernando 40","city":"Santander","province":"Cantabria","postalCode":"39010","phone1":"942123456","phone2":"","email":"isabel.torres@email.com","observations":""},
+            {"id":"22","clientNumber":"C-022","nameOrCompany":"Transportes del Norte S.L.","cifNif":"B39123456","address":"Puerto de Santander, Raos","city":"Santander","province":"Cantabria","postalCode":"39011","phone1":"942345678","phone2":"","email":"oficina@transnorte.es","observations":""},
+            {"id":"23","clientNumber":"C-023","nameOrCompany":"Javier Ruiz","cifNif":"11223344L","address":"Avenida de la Libertad 2","city":"Donostia-San Sebastián","province":"Guipúzcoa","postalCode":"20004","phone1":"943123456","phone2":"","email":"javier.ruiz@email.com","observations":""},
+            {"id":"24","clientNumber":"C-024","nameOrCompany":"Quesos del País Vasco","cifNif":"B20987654","address":"Barrio Osinaga 15","city":"Hernani","province":"Guipúzcoa","postalCode":"20130","phone1":"943556677","phone2":"","email":"info@quesosvascos.com","observations":""},
+            {"id":"25","clientNumber":"C-025","nameOrCompany":"Carmen Moreno","cifNif":"22334455M","address":"Calle Mayor 33","city":"Pamplona","province":"Navarra","postalCode":"31001","phone1":"948123456","phone2":"","email":"carmen.moreno@email.com","observations":""},
+            {"id":"26","clientNumber":"C-026","nameOrCompany":"Mecanizados de Precisión Navarra S.L.","cifNif":"B31654987","address":"Polígono Industrial de Landaben, Calle A","city":"Pamplona","province":"Navarra","postalCode":"31012","phone1":"948765432","phone2":"","email":"info@mecanizadosnavarra.com","observations":"Cliente con requerimientos técnicos muy específicos."}
         ];
         nextClientId = 27;
+        nextClientNumber = 27;
         saveClients();
+    }
+
+    // Ensure all clients have client numbers for backward compatibility
+    if (clients.length > 0) {
+        let maxClientNumber = 0;
+        let clientsUpdated = false;
+        
+        clients.forEach(client => {
+            if (!client.clientNumber) {
+                // Generate client number based on ID for existing clients
+                client.clientNumber = `C-${String(client.id).padStart(3, '0')}`;
+                clientsUpdated = true;
+            }
+            // Track the highest client number
+            const clientNumValue = parseInt(client.clientNumber.replace('C-', ''));
+            if (clientNumValue > maxClientNumber) {
+                maxClientNumber = clientNumValue;
+            }
+        });
+        
+        // Set nextClientNumber to one after the highest existing number
+        if (maxClientNumber > 0) {
+            nextClientNumber = maxClientNumber + 1;
+        }
+        
+        if (clientsUpdated) {
+            saveClients();
+        }
     }
 
     if (proveedores.length === 0) {
@@ -1132,6 +1163,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const clientForm = document.getElementById('clientForm');
     const clientIdInput = document.getElementById('clientId');
     const clientModeInput = document.getElementById('clientMode');
+    const clientNumberInput = document.getElementById('clientNumber');
     const clientModalLabel = document.getElementById('clientModalLabel');
     const clientModalSubmitBtn = document.getElementById('clientModalSubmitBtn');
     const clientModalDeleteBtn = document.getElementById('clientModalDeleteBtn');
@@ -1259,6 +1291,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function saveClients() {
         localStorage.setItem('tallerAppClients', JSON.stringify(clients));
         localStorage.setItem('nextClientId', nextClientId.toString());
+        localStorage.setItem('nextClientNumber', nextClientNumber.toString());
     }
     
     function saveProveedores() {
@@ -1655,6 +1688,8 @@ document.addEventListener('DOMContentLoaded', function() {
             clientModalSubmitBtn.innerHTML = '<i class="fas fa-plus me-2"></i> Añadir Cliente';
             clientModalSubmitBtn.classList.remove('btn-warning', 'btn-info');
             clientModalSubmitBtn.classList.add('btn-primary');
+            // Auto-generate next customer number
+            clientNumberInput.value = `C-${String(nextClientNumber).padStart(3, '0')}`;
         } else {
             const client = clients.find(c => c.id === clientId);
             if (!client) {
@@ -1662,6 +1697,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             clientIdInput.value = client.id;
+            clientNumberInput.value = client.clientNumber || `C-${String(client.id).padStart(3, '0')}`; // Fallback for existing clients
             clientNameOrCompanyInput.value = client.nameOrCompany;
             clientCifNifInput.value = client.cifNif;
             clientAddressInput.value = client.address;
@@ -2041,12 +2077,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (filteredClients.length === 0) {
-            clientsTableBody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">No se encontraron clientes.</td></tr>';
+            clientsTableBody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">No se encontraron clientes.</td></tr>';
         } else {
             filteredClients.forEach(client => {
                 const row = clientsTableBody.insertRow();
                 row.innerHTML = `
                     <td>${client.id}</td>
+                    <td><strong class="text-primary">${client.clientNumber || `C-${String(client.id).padStart(3, '0')}`}</strong></td>
                     <td><a href="#" class="text-decoration-none client-name-link" data-id="${client.id}">${client.nameOrCompany}</a></td>
                     <td>${client.cifNif}</td>
                     <td>${client.phone1}</td>
@@ -2417,6 +2454,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const id = clientIdInput.value;
 
         const clientData = {
+            clientNumber: clientNumberInput.value,
             nameOrCompany: clientNameOrCompanyInput.value,
             cifNif: clientCifNifInput.value,
             address: clientAddressInput.value,
@@ -2433,6 +2471,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const newClient = { id: nextClientId.toString(), ...clientData };
             clients.push(newClient);
             nextClientId++;
+            nextClientNumber++;
         } else if (mode === 'edit') {
             const index = clients.findIndex(c => c.id === id);
             if (index > -1) {
