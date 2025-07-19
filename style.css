@@ -509,15 +509,66 @@ body {
 }
 
 /* Tabla de operarios */
-#operariosTable th, #operariosTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-#operariosTable thead th:nth-child(1), #operariosTable tbody td:nth-child(1) { width: 5%; }
-#operariosTable thead th:nth-child(2), #operariosTable tbody td:nth-child(2) { width: 30%; }
-#operariosTable thead th:nth-child(3), #operariosTable tbody td:nth-child(3) { width: 25%; }
-#operariosTable thead th:nth-child(4), #operariosTable tbody td:nth-child(4) { width: 15%; }
-#operariosTable thead th:nth-child(5), #operariosTable tbody td:nth-child(5) { width: 25%; }
+#operariosTable { 
+    table-layout: fixed; 
+    border-radius: 12px;
+    overflow: hidden;
+    animation: tableLoadFadeIn 0.6s ease-out;
+}
+#operariosTable th, #operariosTable td { 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+#operariosTable th:first-child, #operariosTable td:first-child { border-left: none; }
+#operariosTable thead th:nth-child(1), #operariosTable tbody td:nth-child(1) { 
+    width: 5%; 
+    text-align: center;
+    font-weight: 600;
+    background-color: rgba(155, 89, 182, 0.1);
+    color: #8e44ad;
+}
+#operariosTable thead th:nth-child(2), #operariosTable tbody td:nth-child(2) { 
+    width: 30%; 
+    font-weight: 500;
+    color: #2c3e50;
+}
+#operariosTable thead th:nth-child(3), #operariosTable tbody td:nth-child(3) { 
+    width: 25%; 
+    color: #e67e22;
+    font-weight: 500;
+}
+#operariosTable thead th:nth-child(4), #operariosTable tbody td:nth-child(4) { 
+    width: 15%; 
+    text-align: center;
+    color: #3498db;
+}
+#operariosTable thead th:nth-child(5), #operariosTable tbody td:nth-child(5) { 
+    width: 25%; 
+    color: #27ae60;
+}
+#operariosTable tbody tr:hover {
+    background: linear-gradient(135deg, #f4e8f7 0%, #f8f1fc 100%);
+    border-left: 4px solid #8e44ad;
+}
+#operariosTable tbody tr:nth-child(even) {
+    background-color: #fafbfc;
+}
 
 /* Tabla de categorías */
-#categoriesTable th, #categoriesTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#categoriesTable { 
+    table-layout: fixed; 
+    border-radius: 12px;
+    overflow: hidden;
+    animation: tableLoadFadeIn 0.6s ease-out;
+}
+#categoriesTable th, #categoriesTable td { 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
 #categoriesTable thead th:nth-child(1), #categoriesTable tbody td:nth-child(1) { width: 5%; }
 #categoriesTable thead th:nth-child(2), #categoriesTable tbody td:nth-child(2) { width: 25%; }
 #categoriesTable thead th:nth-child(3), #categoriesTable tbody td:nth-child(3) { width: 15%; }
