@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive">
+                <div class="table-scroll-fix">
                     <table class="table table-hover mb-0" id="clientsTable">
                         <thead>
                             <tr>
