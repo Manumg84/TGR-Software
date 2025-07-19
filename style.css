@@ -497,14 +497,12 @@ body {
 }
 .modal-body .form-control[readonly] { background-color: #d6d6d6 !important; }
 .button-frame {
-    border: 1px solid #ddd;
-    border-radius: 8px;
     padding: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 150px;
+    width: 155px;
     height: 58px;
 }
 .btn-create-client, .btn-create-proveedor, .btn-create-operario {
