@@ -3015,54 +3015,57 @@ document.addEventListener('DOMContentLoaded', function() {
   return Math.max(...clientes.map(c => parseInt(c.numero) || 0)) + 1;
 }
 
-// Define el número base para el primer cliente
+// Número base para el primer cliente autonumérico
 const BASE_CLIENTE_NUMERO = 430000000;
 
-// Calcula el siguiente número de cliente basado en el campo id
+// Función para calcular el siguiente número de cliente
 function getNextClientNumero() {
+    // Supón que 'clientes' es el array de clientes cargados en memoria
     if (!clientes || clientes.length === 0) return BASE_CLIENTE_NUMERO;
     let maxNumero = Math.max(
-        ...clientes.map(c => parseInt(c.id, 10) || BASE_CLIENTE_NUMERO)
+        ...clientes.map(c => Number(c.id) || BASE_CLIENTE_NUMERO)
     );
     if (maxNumero < BASE_CLIENTE_NUMERO) maxNumero = BASE_CLIENTE_NUMERO;
     return maxNumero + 1;
 }
 
-// Al abrir el modal para crear cliente
-document.getElementById('btnAbrirModal').addEventListener('click', function() {
+// Cuando abras el modal para CREAR cliente
+document.getElementById('btnAbrirModalCliente').addEventListener('click', function() {
     document.getElementById('clientNumero').value = getNextClientNumero();
-    // ... tu código para limpiar el formulario y mostrar el modal
+    document.getElementById('clientNumero').readOnly = true;
+    // Limpia otros campos del formulario aquí si es necesario
+    // Muestra el modal
 });
 
-// Al abrir el modal para editar cliente
+// Cuando abras el modal para EDITAR cliente
 function abrirModalEditarCliente(cliente) {
-    document.getElementById('clientNumero').value = cliente.id; // Mostramos el id existente
-    // ... rellena el resto de campos del formulario
+    document.getElementById('clientNumero').value = cliente.id; // Muestra el id existente
+    document.getElementById('clientNumero').readOnly = true;
+    // Rellena el resto de campos...
+    // Muestra el modal
 }
 
-// Al guardar un cliente nuevo
+// Al guardar un nuevo cliente
 function guardarClienteNuevo() {
     const nuevoCliente = {
-        id: document.getElementById('clientNumero').value, // Guarda el id autonumérico
+        id: document.getElementById('clientNumero').value,
         nameOrCompany: document.getElementById('clientNameOrCompany').value,
         cifNif: document.getElementById('clientCifNif').value,
         address: document.getElementById('clientAddress').value,
-        // ... otros campos
+        // ...otros campos
     };
     clientes.push(nuevoCliente);
-    saveClients(); // Asumiendo que tienes una función para guardar
-    // ...cierra modal y refresca lista
+    saveClients(); // O tu función de guardado
+    // Cierra el modal y refresca la lista
 }
 
-// Al guardar edición de cliente, no cambias el id
+// Al guardar edición de cliente, NO cambies el id
 function guardarEdicionCliente(clienteEditado) {
-    // Busca por id y reemplaza los datos, excepto el id
     const index = clientes.findIndex(c => c.id === clienteEditado.id);
     if (index > -1) {
         clientes[index] = { ...clienteEditado };
     }
     saveClients();
-    // ...cierra modal y refresca lista
+    // Cierra el modal y refresca la lista
 }
-
 });
