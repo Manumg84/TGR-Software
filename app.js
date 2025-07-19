@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <option value="nameOrCompany">Nombre/Empresa</option>
                                 <option value="cifNif">CIF/NIF</option>
                                 <option value="phone1">Teléfono 1</option>
+                                <option value="phone2">Teléfono 2</option>
                                 <option value="email">Email</option>
                                 <option value="city">Localidad</option>
                             </select>
