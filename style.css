@@ -569,18 +569,84 @@ body {
     text-overflow: ellipsis; 
     border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
-#categoriesTable thead th:nth-child(1), #categoriesTable tbody td:nth-child(1) { width: 5%; }
-#categoriesTable thead th:nth-child(2), #categoriesTable tbody td:nth-child(2) { width: 25%; }
-#categoriesTable thead th:nth-child(3), #categoriesTable tbody td:nth-child(3) { width: 15%; }
-#categoriesTable thead th:nth-child(4), #categoriesTable tbody td:nth-child(4) { width: 35%; }
-#categoriesTable thead th:nth-child(5), #categoriesTable tbody td:nth-child(5) { width: 20%; }
+#categoriesTable th:first-child, #categoriesTable td:first-child { border-left: none; }
+#categoriesTable thead th:nth-child(1), #categoriesTable tbody td:nth-child(1) { 
+    width: 5%; 
+    text-align: center;
+    font-weight: 600;
+    background-color: rgba(230, 126, 34, 0.1);
+    color: #d35400;
+}
+#categoriesTable thead th:nth-child(2), #categoriesTable tbody td:nth-child(2) { 
+    width: 25%; 
+    font-weight: 500;
+    color: #2c3e50;
+}
+#categoriesTable thead th:nth-child(3), #categoriesTable tbody td:nth-child(3) { 
+    width: 15%; 
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    color: #8e44ad;
+}
+#categoriesTable thead th:nth-child(4), #categoriesTable tbody td:nth-child(4) { 
+    width: 35%; 
+    color: #7f8c8d;
+    font-style: italic;
+}
+#categoriesTable thead th:nth-child(5), #categoriesTable tbody td:nth-child(5) { 
+    width: 20%; 
+    text-align: center;
+}
+#categoriesTable tbody tr:hover {
+    background: linear-gradient(135deg, #fef5e7 0%, #fcf4dd 100%);
+    border-left: 4px solid #e67e22;
+}
+#categoriesTable tbody tr:nth-child(even) {
+    background-color: #fafbfc;
+}
 
 /* Tabla de estados de trabajo */
-#workStatusesTable th, #workStatusesTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-#workStatusesTable thead th:nth-child(1), #workStatusesTable tbody td:nth-child(1) { width: 10%; }
-#workStatusesTable thead th:nth-child(2), #workStatusesTable tbody td:nth-child(2) { width: 25%; }
-#workStatusesTable thead th:nth-child(3), #workStatusesTable tbody td:nth-child(3) { width: 40%; }
-#workStatusesTable thead th:nth-child(4), #workStatusesTable tbody td:nth-child(4) { width: 25%; }
+#workStatusesTable { 
+    table-layout: fixed; 
+    border-radius: 12px;
+    overflow: hidden;
+    animation: tableLoadFadeIn 0.6s ease-out;
+}
+#workStatusesTable th, #workStatusesTable td { 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+#workStatusesTable th:first-child, #workStatusesTable td:first-child { border-left: none; }
+#workStatusesTable thead th:nth-child(1), #workStatusesTable tbody td:nth-child(1) { 
+    width: 10%; 
+    text-align: center;
+    font-weight: 600;
+    background-color: rgba(46, 204, 113, 0.1);
+    color: #27ae60;
+}
+#workStatusesTable thead th:nth-child(2), #workStatusesTable tbody td:nth-child(2) { 
+    width: 25%; 
+    font-weight: 500;
+    color: #2c3e50;
+}
+#workStatusesTable thead th:nth-child(3), #workStatusesTable tbody td:nth-child(3) { 
+    width: 40%; 
+    color: #7f8c8d;
+    font-style: italic;
+}
+#workStatusesTable thead th:nth-child(4), #workStatusesTable tbody td:nth-child(4) { 
+    width: 25%; 
+    text-align: center;
+}
+#workStatusesTable tbody tr:hover {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d5eddf 100%);
+    border-left: 4px solid #27ae60;
+}
+#workStatusesTable tbody tr:nth-child(even) {
+    background-color: #fafbfc;
+}
 
 /* --------------------------------------
    7. BUSCADORES Y FILTROS EN TABLAS
