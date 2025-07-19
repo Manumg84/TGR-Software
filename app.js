@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </select>
                         </div>
                         <div class="button-frame">
-                            <button class="btn btn-primary btn-create-client" id="createClientBtn"><i class="fas fa-plus me-2"></i> Crear Cliente</button>
+                            <button class="btn btn-primary" id="createClientBtn"><i class="fas fa-plus me-2"></i> Crear Cliente</button>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </select>
                         </div>
                         <div class="button-frame">
-                            <button class="btn btn-primary" id="createProveedorBtn"><i class="fas fa-plus me-2"></i> Crear Proveedor</button>                        
+                            <button class="btn btn-primary" id="createProveedorBtn"><i class="fas fa-plus me-2"></i> Crear Proveedor</button>                     
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </select>
                         </div>
                         <div class="button-frame">
-                            <button class="btn btn-primary btn-create-operario" id="createOperarioBtn"><i class="fas fa-plus me-2"></i> Crear Operario</button>
+                            <button class="btn btn-primary" id="createOperarioBtn"><i class="fas fa-plus me-2"></i> Crear Operario</button>
                         </div>
                     </div>
                 </div>
