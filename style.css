@@ -497,7 +497,6 @@ body {
 }
 .modal-body .form-control[readonly] { background-color: #d6d6d6 !important; }
 .button-frame {
-    border-radius: 8px;
     padding: 4px;
     display: flex;
     align-items: center;
