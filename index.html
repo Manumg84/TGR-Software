@@ -408,15 +408,15 @@
                 </div>
                 <div class="modal-body pt-0">
                     <form id="clientForm" class="p-3 border rounded">
-                        <input type="hidden" id="clientId">
+                        <input type="hidden" id="clientId"> <!-- Usado internamente, no lo toques -->
                         <input type="hidden" id="clientMode"> <!-- To store 'create', 'view', 'edit' -->
                         <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="clientId" class="form-label">Nº Cliente</label>
-                                <input type="text" class="form-control" id="clientId" name="clientId" readonly>
+                            <div class="col-md-6 mb-3"> <!-- CAMPO NUEVO: Nº Cliente visible y de solo lectura -->
+                                <label for="clientNumero" class="form-label">Nº Cliente</label>
+                                <input type="text" class="form-control" id="clientNumero" name="clientNumero" readonly>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="clientNumero" class="form-label text-muted">Nombre o Empresa</label>
+                                <label for="clientNameOrCompany" class="form-label text-muted">Nombre o Empresa</label>
                                 <input type="text" class="form-control" id="clientNameOrCompany" required>
                             </div>
                             <div class="col-md-6 mb-3">
