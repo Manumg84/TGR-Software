@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <option value="nameOrCompany">Nombre/Empresa</option>
                                 <option value="cifNif">CIF/NIF</option>
                                 <option value="phone1">Teléfono 1</option>
+                                <option value="phone2">Teléfono 2</option>
                                 <option value="email">Email</option>
                                 <option value="city">Localidad</option>
                             </select>
@@ -93,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <th scope="col">Nombre/Empresa</th>
                                 <th scope="col">CIF/NIF</th>
                                 <th scope="col">Teléfono 1</th>
+                                <th scope="col">Teléfono 2</th>
                                 <th scope="col">Email</th>
                             </tr>
                         </thead>
@@ -2048,6 +2050,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td><a href="#" class="text-decoration-none client-name-link" data-id="${client.id}">${client.nameOrCompany}</a></td>
                     <td>${client.cifNif}</td>
                     <td>${client.phone1}</td>
+                    <td>${client.phone2}</td>
                     <td>${client.email}</td>
                 `;
             });
@@ -2076,6 +2079,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td><a href="#" class="text-decoration-none proveedor-name-link" data-id="${proveedor.id}">${proveedor.nameOrCompany}</a></td>
                 <td>${proveedor.cifNif}</td>
                 <td>${proveedor.phone1}</td>
+                <td>${proveedor.phone2}</td>
                 <td>${proveedor.email}</td>
             `;
         });
