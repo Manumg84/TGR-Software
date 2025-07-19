@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="input-group me-md-2 mb-2 mb-md-0 w-100 w-md-auto">
                             <input type="text" class="form-control" id="clientSearchInput" placeholder="Buscar cliente...">
                             <select class="form-select" id="clientFilterSelect" style="max-width: 200px;">
+                                <option value="clientNumber">N° Cliente</option>
                                 <option value="nameOrCompany">Nombre/Empresa</option>
                                 <option value="cifNif">CIF/NIF</option>
                                 <option value="phone1">Teléfono 1</option>
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <table class="table table-hover mb-0" id="clientsTable">
                         <thead>
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col">N° Cliente</th>
                                 <th scope="col">Nombre/Empresa</th>
                                 <th scope="col">CIF/NIF</th>
                                 <th scope="col">Teléfono 1</th>
@@ -641,7 +642,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         renderClientsTable(clientSearchInput ? clientSearchInput.value : '',
-                           clientFilterSelect ? clientFilterSelect.value : 'nameOrCompany'); 
+                           clientFilterSelect ? clientFilterSelect.value : 'clientNumber'); 
     }
 
     function handleProveedoresSubTabShown() {
@@ -1025,6 +1026,9 @@ document.addEventListener('DOMContentLoaded', function() {
         saveClients();
     }
 
+    // Migrate existing clients to have client numbers
+    migrateClientNumbers();
+
     if (proveedores.length === 0) {
         proveedores = [
             {"id":"1","nameOrCompany":"Recambios Global Parts","cifNif":"B98765432","address":"Polígono Industrial El Pino, Nave 5","city":"Sevilla","province":"Sevilla","postalCode":"41016","phone1":"954987654","phone2":"","email":"pedidos@globalparts.com","observations":"Proveedor principal de recambios de automoción."},
@@ -1136,6 +1140,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const clientModalSubmitBtn = document.getElementById('clientModalSubmitBtn');
     const clientModalDeleteBtn = document.getElementById('clientModalDeleteBtn');
     const clientModalEditBtn = document.getElementById('clientModalEditBtn'); 
+    const clientNumberInput = document.getElementById('clientNumber');
     const clientNameOrCompanyInput = document.getElementById('clientNameOrCompany');
     const clientCifNifInput = document.getElementById('clientCifNif');
     const clientAddressInput = document.getElementById('clientAddress');
@@ -1298,6 +1303,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function saveChatMessages() {
         localStorage.setItem('tallerAppChatMessages', JSON.stringify(chatMessages));
+    }
+
+    function generateNextClientNumber() {
+        const currentYear = new Date().getFullYear();
+        
+        // Find the highest client number for the current year
+        let maxNumber = 0;
+        clients.forEach(client => {
+            if (client.clientNumber && client.clientNumber.startsWith(`C-${currentYear}-`)) {
+                const numberPart = parseInt(client.clientNumber.split('-')[2]);
+                if (numberPart > maxNumber) {
+                    maxNumber = numberPart;
+                }
+            }
+        });
+        
+        const nextNumber = maxNumber + 1;
+        return `C-${currentYear}-${String(nextNumber).padStart(3, '0')}`;
+    }
+
+    function migrateClientNumbers() {
+        // Add client numbers to existing clients that don't have them
+        const currentYear = new Date().getFullYear();
+        let numberCounter = 1;
+        let hasChanges = false;
+
+        clients.forEach(client => {
+            if (!client.clientNumber) {
+                client.clientNumber = `C-${currentYear}-${String(numberCounter).padStart(3, '0')}`;
+                numberCounter++;
+                hasChanges = true;
+            }
+        });
+
+        if (hasChanges) {
+            saveClients();
+        }
     }
 
     function populateUserLevelSelectOptions() {
@@ -1642,15 +1684,18 @@ document.addEventListener('DOMContentLoaded', function() {
         clientModalEditBtn.style.display = 'none'; 
 
         const inputs = [
-            clientNameOrCompanyInput, clientCifNifInput, clientAddressInput,
+            clientNumberInput, clientNameOrCompanyInput, clientCifNifInput, clientAddressInput,
             clientCityInput, clientProvinceInput, clientPostalCodeInput,
             clientPhone1Input, clientPhone2Input, clientEmailInput, clientObservationsInput
         ];
         inputs.forEach(input => {
-            input.readOnly = false;
+            if (input !== clientNumberInput) { // clientNumber should always be readonly
+                input.readOnly = false;
+            }
         });
 
         if (mode === 'create') {
+            clientNumberInput.value = generateNextClientNumber();
             clientModalLabel.innerHTML = '<i class="fas fa-user-plus me-2 text-primary"></i> Crear Nuevo Cliente';
             clientModalSubmitBtn.innerHTML = '<i class="fas fa-plus me-2"></i> Añadir Cliente';
             clientModalSubmitBtn.classList.remove('btn-warning', 'btn-info');
@@ -1662,6 +1707,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             clientIdInput.value = client.id;
+            clientNumberInput.value = client.clientNumber || 'N/A';
             clientNameOrCompanyInput.value = client.nameOrCompany;
             clientCifNifInput.value = client.cifNif;
             clientAddressInput.value = client.address;
@@ -1680,7 +1726,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 clientModalSubmitBtn.classList.add('btn-info');
                 
                 inputs.forEach(input => {
-                    input.readOnly = true;
+                    if (input !== clientNumberInput) { // clientNumber should always be readonly
+                        input.readOnly = true;
+                    }
                 });
 
                 clientModalDeleteBtn.style.display = 'inline-block';
@@ -1695,7 +1743,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     clientModalEditBtn.style.display = 'none'; 
                     
                     inputs.forEach(input => {
-                        input.readOnly = false;
+                        if (input !== clientNumberInput) { // clientNumber should always be readonly
+                            input.readOnly = false;
+                        }
                     });
 
                     clientModalDeleteBtn.style.display = 'inline-block';
@@ -2029,7 +2079,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function renderClientsTable(searchTerm = '', filterBy = 'nameOrCompany') {
+    function renderClientsTable(searchTerm = '', filterBy = 'clientNumber') {
         const clientsTableBody = document.getElementById('clientsTableBody');
         if (!clientsTableBody) return;
 
@@ -2041,12 +2091,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (filteredClients.length === 0) {
-            clientsTableBody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">No se encontraron clientes.</td></tr>';
+            clientsTableBody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">No se encontraron clientes.</td></tr>';
         } else {
             filteredClients.forEach(client => {
                 const row = clientsTableBody.insertRow();
                 row.innerHTML = `
-                    <td>${client.id}</td>
+                    <td>${client.clientNumber || 'N/A'}</td>
                     <td><a href="#" class="text-decoration-none client-name-link" data-id="${client.id}">${client.nameOrCompany}</a></td>
                     <td>${client.cifNif}</td>
                     <td>${client.phone1}</td>
@@ -2159,7 +2209,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const currentClientSearchInput = document.getElementById('clientSearchInput');
             const currentClientFilterSelect = document.getElementById('clientFilterSelect');
             renderClientsTable(currentClientSearchInput ? currentClientSearchInput.value : '',
-                               currentClientFilterSelect ? currentClientFilterSelect.value : 'nameOrCompany');
+                               currentClientFilterSelect ? currentClientFilterSelect.value : 'clientNumber');
         }
     }
 
@@ -2417,6 +2467,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const id = clientIdInput.value;
 
         const clientData = {
+            clientNumber: clientNumberInput.value,
             nameOrCompany: clientNameOrCompanyInput.value,
             cifNif: clientCifNifInput.value,
             address: clientAddressInput.value,
@@ -2443,7 +2494,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentClientSearchInput = document.getElementById('clientSearchInput');
         const currentClientFilterSelect = document.getElementById('clientFilterSelect');
         renderClientsTable(currentClientSearchInput ? currentClientSearchInput.value : '',
-                           currentClientFilterSelect ? currentClientFilterSelect.value : 'nameOrCompany');
+                           currentClientFilterSelect ? currentClientFilterSelect.value : 'clientNumber');
         clientModal.hide();
     }
 
