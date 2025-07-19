@@ -502,7 +502,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 150px;
+    width: 155px;
     height: 58px;
 }
 .btn-create-client, .btn-create-proveedor, .btn-create-operario {
