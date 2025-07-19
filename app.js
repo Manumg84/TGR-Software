@@ -3010,6 +3010,23 @@ document.addEventListener('DOMContentLoaded', function() {
         messageModal.show();
     });
 
+    function getNextClientNumero() {
+  if (!clientes || clientes.length === 0) return 1;
+  return Math.max(...clientes.map(c => parseInt(c.numero) || 0)) + 1;
+}
+
+// Cuando abras el modal:
+document.getElementById('btnAbrirModal').addEventListener('click', function() {
+  document.getElementById('clientNumero').value = getNextClientNumero();
+  // ...código para mostrar el modal
+});
+
+    const nuevoCliente = {
+  numero: document.getElementById('clientNumero').value,
+  // ...otros campos
+};
+clientes.push(nuevoCliente);
+
     sendChatMessageBtn.addEventListener('click', sendChatMessage);
     chatMessageInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
