@@ -3028,7 +3028,7 @@ const BASE_CLIENTE_NUMERO = 430000000;
 function getNextClientNumero() {
     if (!clientes || clientes.length === 0) return BASE_CLIENTE_NUMERO;
     // Busca el mayor número actual y suma 1
-    let maxNumero = Math.max(...clientes.map(c => parseInt(c.numero, 10) || BASE_CLIENTE_NUMERO));
+    let maxNumero = Math.max(...clientes.map(c => parseInt(c.id, 10) || BASE_CLIENTE_NUMERO));
     // En caso de que todos sean menores al base, empieza desde el base
     if (maxNumero < BASE_CLIENTE_NUMERO) maxNumero = BASE_CLIENTE_NUMERO;
     return maxNumero + 1;
