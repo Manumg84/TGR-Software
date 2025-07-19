@@ -355,7 +355,7 @@ body {
 
 #clientsTable {
   width: 100%;
-  border-collapse: separate;
+  
 }
 
 #clientsTable thead, #clientsTable tbody {
