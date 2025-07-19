@@ -3188,31 +3188,5 @@ function renderClientsTable(searchTerm = '', filterBy = 'nameOrCompany') {
     
 });
 
-// Hacer las ventanas modales arrastrables
-document.querySelectorAll('.modal').forEach(modal => {
-  const header = modal.querySelector('.modal-header');
-  if (header) {
-    let isDragging = false;
-    let offsetX, offsetY;
-
-    header.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      const rect = modal.getBoundingClientRect();
-      offsetX = e.clientX - rect.left;
-      offsetY = e.clientY - rect.top;
-      modal.style.position = 'absolute';
-      modal.style.zIndex = 9999;
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (isDragging) {
-        modal.style.left = (e.clientX - offsetX) + 'px';
-        modal.style.top = (e.clientY - offsetY) + 'px';
-      }
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-    });
   }
 });
