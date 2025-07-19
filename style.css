@@ -1,0 +1,657 @@
+/* ======================================
+   EMPRESARIAL APP - MAIN STYLESHEET
+   --------------------------------------
+   Diseño y estilos principales para toda la aplicación de gestión empresarial.
+   Unificado, comentado y optimizado por bloques.
+   ====================================== */
+
+
+/* --------------------------------------
+   1. GLOBAL FONTS & BODY
+   -------------------------------------- */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --------------------------------------
+   2. SIDEBAR & NAVIGATION
+   -------------------------------------- */
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: linear-gradient(to bottom, #1a2a3a, #0a1014);
+    min-height: 100vh;
+    transition: all 0.5s ease;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 0 15px 15px 0;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+#sidebar .sidebar-header {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #eee;
+    font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+#sidebar .sidebar-header .icon {
+    font-size: 26px;
+    min-width: 50px;
+    text-align: center;
+    color: #8bbce1;
+}
+#sidebar .sidebar-header .logo-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #8bbce1;
+}
+
+/* --- Sidebar navigation links --- */
+#sidebar .nav-links {
+    padding: 0 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-grow: 1;
+}
+#sidebar .nav-links::-webkit-scrollbar { width: 6px; }
+#sidebar .nav-links::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+#sidebar .nav-links::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+#sidebar .nav-links::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+
+#sidebar .nav-links li {
+    position: relative;
+    list-style: none;
+    transition: all 0.3s ease;
+    margin-bottom: 8px;
+}
+#sidebar .nav-links li:hover {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+}
+#sidebar .nav-links li .iocn-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+}
+#sidebar .nav-links li i.icon {
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #e0e0e0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#sidebar .nav-links li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+#sidebar .nav-links li a .link-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+#sidebar .nav-links li .sub-menu {
+    padding: 6px 0 6px 40px;
+    margin-top: 5px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    display: none;
+}
+#sidebar .nav-links li.showMenu .sub-menu { display: block; }
+#sidebar .nav-links li .sub-menu a {
+    color: #ddd;
+    font-size: 10px;
+    padding: 6px 15px;
+    white-space: nowrap;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+#sidebar .nav-links li .sub-menu a:hover {
+    opacity: 1;
+    color: #8bbce1;
+}
+#sidebar .nav-links li a.nav-link.active {
+    background-color: #0d6efd;
+    color: #fff;
+}
+#sidebar .nav-links li a.nav-link.active .link-name,
+#sidebar .nav-links li a.nav-link.active i.icon {
+    color: #fff;
+}
+#sidebar .nav-links li.showMenu i.arrow {
+    transform: rotate(90deg);
+    color: #8bbce1;
+}
+#sidebar .nav-links i.arrow{
+    height: 40px;
+    min-width: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #bbb;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#sidebar .nav-links li .sub-menu.blank { opacity: 0; pointer-events: none; }
+
+/* --- Sidebar calendar and agenda --- */
+#sidebar .sidebar-card {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.05);
+    box-shadow: none;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+#sidebar .calendar-widget .card-title { font-size: 0.85rem; margin-bottom: 0.5rem; color: #e0e0e0 !important; }
+#sidebar .calendar-widget h3 { font-size: 24px; margin-bottom: 0.2rem; color: #8bbce1 !important; }
+#sidebar .calendar-widget p.lead { font-size: 0.85rem; margin-bottom: 0.1rem; color: #e0e0e0 !important; }
+#sidebar .calendar-widget small { font-size: 8px; color: #cccccc !important; }
+#sidebar .agenda-display .card-header { background: transparent !important; border-bottom: none !important; }
+#sidebar .agenda-display .card-header h5 { color: #e0e0e0 !important; }
+#sidebar .agenda-display .list-group-item {
+    font-size: 11px;
+    padding: 8px 15px;
+    color: #e0e0e0 !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+}
+#sidebar .agenda-display .list-group-item:last-child { border-bottom: none !important; }
+#sidebar .agenda-display .list-group-item .text-primary { color: #8bbce1 !important; }
+
+/* --- Sidebar Footer (usuario) --- */
+#sidebar-footer {
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+#sidebar-footer .user-profile img { width: 30px; height: 30px; object-fit: cover; }
+#sidebar-footer .user-profile span { font-size: 0.75rem; color: #e0e0e0 !important; }
+#sidebar-footer .fa-bell { font-size: 15px !important; color: #e0e0e0 !important; }
+#sidebar-footer .badge { font-size: 0.5em; padding: 0.3em; }
+#sidebar-footer .fa-chevron-down { color: #e0e0e0 !important; }
+
+/* --------------------------------------
+   3. TOP NAVBAR & DASHBOARD CARDS
+   -------------------------------------- */
+#top-navbar {
+    height: auto;
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+/* --- Dashboard cards dentro del navbar --- */
+.dashboard-card.top-navbar-card {
+    height: 60px;
+    width: 320px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+.top-navbar-card .card-body {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.top-navbar-card .card-body > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 1;
+}
+.top-navbar-card .card-title { font-size: 0.6rem; margin-bottom: 0px !important; line-height: 1; }
+.top-navbar-card h2 { font-size: 0.9rem; margin-bottom: 0px !important; line-height: 1; }
+.top-navbar-card .card-text { font-size: 0.5rem; margin-bottom: 0px !important; line-height: 1; }
+.top-navbar-card .fa-lg { font-size: 0.9rem !important; }
+
+/* --------------------------------------
+   4. MAIN CONTENT AREA & CARDS
+   -------------------------------------- */
+#page-content-wrapper {
+    flex-grow: 1;
+    background: linear-gradient(90deg, rgb(41, 55, 69) 0%, rgb(35, 47, 59) 100%);
+}
+#main-content {
+    padding: 30px;
+    background: linear-gradient(90deg, rgb(41, 55, 69) 0%, rgb(35, 47, 59) 100%);
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.dashboard-card {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border: none;
+    padding: 15px;
+    height: 100%;
+}
+/* --- Variantes de dashboard cards --- */
+.dashboard-card.p-4 { width: 1200px; height: 600px; overflow: auto; max-width: 1400px; }
+.dashboard-card.primary-card { background: linear-gradient(90deg, rgb(41, 55, 69) 0%, rgb(35, 47, 59) 100%);}
+.dashboard-card.success-card { background: linear-gradient(135deg, #28a745 0%, #218838 100%);}
+.dashboard-card.warning-card { background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);}
+.dashboard-card .card-title { font-size: 11px; margin-bottom: 8px; }
+.dashboard-card h2 { font-size: 28px; margin-bottom: 5px; }
+.dashboard-card .card-text { font-size: 9px; }
+
+/* --------------------------------------
+   5. TABS (Navegación principal)
+   -------------------------------------- */
+.nav-tabs {
+    border-bottom: none;
+    margin-bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    z-index: 1;
+    padding-left: 15px;
+}
+.nav-tabs .nav-item { margin-bottom: 0; margin-right: -15px; position: relative; }
+.nav-tabs .nav-item .nav-link { position: relative; z-index: 1; }
+.nav-tabs .nav-item .nav-link.active { z-index: 3; }
+.nav-tabs .nav-item:has(.nav-link.active) { z-index: 2; }
+.nav-tabs .nav-item:last-child { margin-right: 0; }
+.nav-tabs .nav-link {
+    border: none;
+    border-radius: 0;
+    padding: 0.65rem 2.3rem;
+    color: #6c757d;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e9ecef;
+    transform: skewX(-20deg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    height: 43px;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    z-index: 1;
+}
+/* --- Skew y anti-skew en tabs --- */
+.nav-tabs .nav-link .tab-label { transform: skewX(20deg); display: inline-flex; align-items: center; font-size: 0.85rem; flex-grow: 1; justify-content: center; }
+.nav-tabs .nav-link.active {
+    color: #343a40;
+    background-color: #fff;
+    transform: skewX(-20deg) translateY(-5px);
+    z-index: 3;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    border-top: 3px solid #0d6efd;
+    padding-bottom: calc(0.65rem + 5px);
+}
+.nav-tabs .nav-link:hover:not(.active) {
+    background-color: #dbe0e4;
+    color: #555;
+    transform: skewX(-20deg) translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+/* --- Botón de cerrar pestañas dentro de tab-content --- */
+.tab-content .close-tab-btn {
+    position: absolute; top: 13px; right: 18px;
+    background: transparent; border: none;
+    font-size: 1rem; color: #6c757d; opacity: 0.6;
+    transition: all 0.2s; line-height: 1; padding: 4px;
+    z-index: 10; cursor: pointer;
+}
+.tab-content .close-tab-btn:hover { opacity: 1; color: #dc3545; }
+.tab-content > .tab-pane {
+    background-color: #fff;
+    padding: 23px;
+    border-radius: 0 15px 15px 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    margin-top: -10px;
+    position: relative;
+    z-index: 0;
+    min-height: 300px;
+}
+
+/* --------------------------------------
+   6. TABLAS - CLIENTES, PROVEEDORES, ETC.
+   -------------------------------------- */
+/* --- General --- */
+.table-responsive { border-radius: 10px; overflow: hidden; }
+.table { margin-bottom: 0; background-color: #fff; }
+.table th, .table td { padding: 2px 20px; border-top: 1px solid #eee; color: #333; vertical-align: middle; font-size: 12px; }
+.table thead th {
+    font-size: 10px;
+    background-color: #f8f9fa;
+    color: #666;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.table-hover tbody tr:hover { background-color: #f5f5f5; }
+/* --- Específicos por tabla --- */
+
+/* Tabla de clientes */
+#clientsTable { table-layout: fixed; }
+#clientsTable th, #clientsTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#clientsTable thead th:nth-child(1), #clientsTable tbody td:nth-child(1) { width: 80px; }
+#clientsTable thead th:nth-child(2), #clientsTable tbody td:nth-child(2) { width: 528px; } /* Preferimos el ancho mayor */
+#clientsTable thead th:nth-child(3), #clientsTable tbody td:nth-child(3) { width: 120px; }
+#clientsTable thead th:nth-child(4), #clientsTable tbody td:nth-child(4) { width: 264px; }
+#clientsTable thead th:nth-child(5), #clientsTable tbody td:nth-child(5) { width: 528px; }
+
+/* Tabla de proveedores */
+#proveedoresTable { table-layout: fixed; }
+#proveedoresTable th, #proveedoresTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#proveedoresTable thead th:nth-child(1), #proveedoresTable tbody td:nth-child(1) { width: 80px; }
+#proveedoresTable thead th:nth-child(2), #proveedoresTable tbody td:nth-child(2) { width: 528px; }
+#proveedoresTable thead th:nth-child(3), #proveedoresTable tbody td:nth-child(3) { width: 120px; }
+#proveedoresTable thead th:nth-child(4), #proveedoresTable tbody td:nth-child(4) { width: 264px; }
+#proveedoresTable thead th:nth-child(5), #proveedoresTable tbody td:nth-child(5) { width: 528px; }
+
+/* Tabla de operarios */
+#operariosTable th, #operariosTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#operariosTable thead th:nth-child(1), #operariosTable tbody td:nth-child(1) { width: 5%; }
+#operariosTable thead th:nth-child(2), #operariosTable tbody td:nth-child(2) { width: 30%; }
+#operariosTable thead th:nth-child(3), #operariosTable tbody td:nth-child(3) { width: 25%; }
+#operariosTable thead th:nth-child(4), #operariosTable tbody td:nth-child(4) { width: 15%; }
+#operariosTable thead th:nth-child(5), #operariosTable tbody td:nth-child(5) { width: 25%; }
+
+/* Tabla de categorías */
+#categoriesTable th, #categoriesTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#categoriesTable thead th:nth-child(1), #categoriesTable tbody td:nth-child(1) { width: 5%; }
+#categoriesTable thead th:nth-child(2), #categoriesTable tbody td:nth-child(2) { width: 25%; }
+#categoriesTable thead th:nth-child(3), #categoriesTable tbody td:nth-child(3) { width: 15%; }
+#categoriesTable thead th:nth-child(4), #categoriesTable tbody td:nth-child(4) { width: 35%; }
+#categoriesTable thead th:nth-child(5), #categoriesTable tbody td:nth-child(5) { width: 20%; }
+
+/* Tabla de estados de trabajo */
+#workStatusesTable th, #workStatusesTable td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#workStatusesTable thead th:nth-child(1), #workStatusesTable tbody td:nth-child(1) { width: 10%; }
+#workStatusesTable thead th:nth-child(2), #workStatusesTable tbody td:nth-child(2) { width: 25%; }
+#workStatusesTable thead th:nth-child(3), #workStatusesTable tbody td:nth-child(3) { width: 40%; }
+#workStatusesTable thead th:nth-child(4), #workStatusesTable tbody td:nth-child(4) { width: 25%; }
+
+/* --------------------------------------
+   7. BUSCADORES Y FILTROS EN TABLAS
+   -------------------------------------- */
+#clientSearchInput, #proveedorSearchInput, #operarioSearchInput, #presupuestoSearchInput, #ordenTrabajoSearchInput {
+    flex-grow: 1;
+    max-width: 250px;
+}
+#clientFilterSelect, #proveedorFilterSelect, #operarioFilterSelect, #presupuestoFilterSelect, #ordenTrabajoFilterSelect {
+    width: 200px;
+    height: 34.5px;
+    max-width: none;
+}
+#ordenTrabajoFilterSelect { max-width: 1400px; }
+.d-flex.flex-column.flex-md-row.align-items-center.w-100.w-md-auto { flex-wrap: nowrap; }
+
+/* --------------------------------------
+   8. WIDGETS (CALENDARIO Y AGENDA)
+   -------------------------------------- */
+.calendar-widget {
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.calendar-widget h1, .calendar-widget p { margin-bottom: 0.2rem; }
+.calendar-widget small { color: #777; margin-top: 10px; display: block; }
+.agenda-display .list-group-item {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 10px 18px;
+    color: #333;
+    font-size: 11px;
+}
+.agenda-display .list-group-item .badge { padding: 5px 8px; font-size: 0.7em; font-weight: 500; }
+
+/* --------------------------------------
+   9. BADGES (ESTADOS Y AGENDAS)
+   -------------------------------------- */
+.badge.bg-success-subtle { background-color: rgba(40,167,69,0.15) !important; color: #28a745 !important; }
+.badge.bg-warning-subtle { background-color: rgba(255,193,7,0.15) !important; color: #ffc107 !important; }
+.badge.bg-info-subtle { background-color: rgba(23,162,184,0.15) !important; color: #17a2b8 !important; }
+.badge.bg-primary-subtle { background-color: rgba(139,188,225,0.15) !important; color: #8bbce1 !important; }
+.badge.bg-secondary-subtle { background-color: rgba(173,181,189,0.15) !important; color: #adb5bd !important; }
+
+/* --------------------------------------
+   10. MODALES (CRUD: CLIENTES, PROVEEDORES, ETC.)
+   -------------------------------------- */
+.modal-content {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+}
+.modal-header { border-bottom: 1px solid #eee; background-color: transparent; }
+.modal-title { font-weight: 600; color: #333; font-size: 1rem; }
+.modal-body .form-label { font-weight: 500; color: #555; font-size: 12px; }
+.modal-body .form-control {
+    border-radius: 8px;
+    border-color: #ddd;
+    font-size: 12px;
+    background-color: #fff;
+}
+.modal-body .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,0.25);
+}
+.modal-body .form-control[readonly] { background-color: #d6d6d6 !important; }
+.button-frame {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 150px;
+    height: 58px;
+}
+.btn-create-client, .btn-create-proveedor, .btn-create-operario {
+    width: 140px;
+    height: 48px;
+    font-size: 0.75em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (min-width: 768px) {
+    .btn-create-client.w-md-auto, .btn-create-proveedor.w-md-auto, .btn-create-operario.w-md-auto {
+        width: 140px !important;
+        height: 48px !important;
+    }
+}
+
+/* --- Modal específico por entidad --- */
+#clientModal .modal-body, #clientModal #clientForm,
+#proveedorModal .modal-body, #proveedorModal #proveedorForm,
+#operarioModal .modal-body, #operarioModal #operarioForm,
+#categoryModal .modal-body, #categoryModal #categoryForm,
+#userModal .modal-body, #userModal #userForm,
+#userLevelManagerModal .modal-body, #userLevelManagerModal #userLevelForm,
+#workStatusModal .modal-body, #workStatusModal #workStatusForm,
+#subcategoryModal .modal-body, #subcategoryModal #subcategoryForm,
+#ordenTrabajoModal .modal-body, #ordenTrabajoModal #ordenTrabajoForm,
+#presupuestoModal .modal-body, #presupuestoModal #presupuestoForm
+{
+    background-color: #ffffff !important;
+}
+#ordenTrabajoModal .modal-header, #presupuestoModal .modal-header {
+    background-color: transparent !important;
+}
+
+/* --------------------------------------
+   11. AUTOCOMPLETE Y BOTONES EDICIÓN
+   -------------------------------------- */
+.autocomplete-container { position: relative; width: 100%; }
+.autocomplete-suggestions {
+    position: absolute;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: none;
+    border-radius: 8px;
+    margin-top: 4px;
+}
+.autocomplete-suggestion-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #333;
+}
+.autocomplete-suggestion-item:hover { background-color: #f0f0f0; }
+
+.edit-btn {
+    background-color: #960606 !important;
+    border-color: #960606 !important;
+    color: #ffffff !important;
+}
+.edit-btn i { color: #ffffff !important; }
+
+/* --------------------------------------
+   12. MENSAJERÍA Y CHAT
+   -------------------------------------- */
+#messageModal .modal-body .list-group-item {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 0;
+    cursor: pointer;
+}
+#messageModal .modal-body .list-group-item.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+#messageModal .modal-body .list-group-item:hover { background-color: #e9ecef; }
+#messageModal .modal-body .list-group-item.active:hover { background-color: #0d6efd; }
+
+.chat-messages {
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+}
+.chat-messages .message-bubble {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+    max-width: 75%;
+    word-wrap: break-word;
+}
+.chat-messages .message-bubble.sent {
+    background-color: #0d6efd;
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 2px;
+}
+.chat-messages .message-bubble.received {
+    background-color: #e9ecef;
+    color: #333;
+    margin-right: auto;
+    border-bottom-left-radius: 2px;
+}
+.chat-messages .message-meta {
+    font-size: 0.75em;
+    color: #6c757d;
+    margin-top: -4px;
+    margin-bottom: 8px;
+}
+.chat-messages .message-bubble.sent + .message-meta {
+    text-align: right;
+    margin-right: 12px;
+}
+.chat-messages .message-bubble.received + .message-meta {
+    text-align: left;
+    margin-left: 12px;
+}
+
+/* --------------------------------------
+   13. RESPONSIVE ADAPTATIVO
+   -------------------------------------- */
+@media (max-width: 768px) {
+    #sidebar {
+        min-width: 80px;
+        max-width: 80px;
+        padding: 0;
+    }
+    #sidebar .sidebar-header .logo-name,
+    #sidebar .nav-links li a .link-name,
+    #sidebar .nav-links li .sub-menu a .link-name,
+    #sidebar .nav-links li .sub-menu.blank {
+        display: none;
+        opacity: 0;
+        pointer-events: none;
+    }
+    #sidebar .sidebar-header .icon, #sidebar .nav-links li i.icon {
+        min-width: 100%;
+        text-align: center;
+    }
+    #sidebar .nav-links li .iocn-link { justify-content: center; }
+    #sidebar .nav-links li i.arrow { display: none; }
+    #sidebar .nav-links li a {
+        padding: 10px 0;
+        justify-content: center;
+    }
+    #sidebar .nav-links li .sub-menu {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        width: 200px;
+        background: rgba(0,0,0,0.2);
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-10px);
+    }
+    #sidebar .nav-links li.showMenu .sub-menu {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0);
+    }
+    #top-navbar .search-box { max-width: 200px; }
+    #top-navbar .user-profile span { display: none; }
+    #sidebar .sidebar-card, #sidebar-footer { display: none; }
+    #top-navbar .d-flex.w-100.justify-content-around.align-items-center {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    #top-navbar .dashboard-card.top-navbar-card {
+        width: auto;
+        flex-basis: auto;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 8px !important;
+    }
+    #top-navbar .dashboard-card.top-navbar-card:last-child { margin-bottom: 0 !important; }
+}
+
+/* --------------------------------------
+   FIN DEL ARCHIVO
+   -------------------------------------- */
