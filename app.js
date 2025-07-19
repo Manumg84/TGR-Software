@@ -3015,41 +3015,54 @@ document.addEventListener('DOMContentLoaded', function() {
   return Math.max(...clientes.map(c => parseInt(c.numero) || 0)) + 1;
 }
 
-// Cuando abras el modal:
-document.getElementById('btnAbrirModal').addEventListener('click', function() {
-  document.getElementById('clientNumero').value = getNextClientNumero();
-  // ...código para mostrar el modal
-});
-
-    // Número base para el primer cliente
+// Define el número base para el primer cliente
 const BASE_CLIENTE_NUMERO = 430000000;
 
-// Supón que 'clientes' es un array con los clientes actuales
+// Calcula el siguiente número de cliente basado en el campo id
 function getNextClientNumero() {
     if (!clientes || clientes.length === 0) return BASE_CLIENTE_NUMERO;
-    // Busca el mayor número actual y suma 1
-    let maxNumero = Math.max(...clientes.map(c => parseInt(c.id, 10) || BASE_CLIENTE_NUMERO));
-    // En caso de que todos sean menores al base, empieza desde el base
+    let maxNumero = Math.max(
+        ...clientes.map(c => parseInt(c.id, 10) || BASE_CLIENTE_NUMERO)
+    );
     if (maxNumero < BASE_CLIENTE_NUMERO) maxNumero = BASE_CLIENTE_NUMERO;
     return maxNumero + 1;
 }
 
-// Cuando abras el modal para crear cliente:
+// Al abrir el modal para crear cliente
 document.getElementById('btnAbrirModal').addEventListener('click', function() {
     document.getElementById('clientNumero').value = getNextClientNumero();
-    // ...código para mostrar el modal
+    // ... tu código para limpiar el formulario y mostrar el modal
 });
 
-    const nuevoCliente = {
-  numero: document.getElementById('clientNumero').value,
-  // ...otros campos
-};
-clientes.push(nuevoCliente);
+// Al abrir el modal para editar cliente
+function abrirModalEditarCliente(cliente) {
+    document.getElementById('clientNumero').value = cliente.id; // Mostramos el id existente
+    // ... rellena el resto de campos del formulario
+}
 
-    sendChatMessageBtn.addEventListener('click', sendChatMessage);
-    chatMessageInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendChatMessage();
-        }
-    });
+// Al guardar un cliente nuevo
+function guardarClienteNuevo() {
+    const nuevoCliente = {
+        id: document.getElementById('clientNumero').value, // Guarda el id autonumérico
+        nameOrCompany: document.getElementById('clientNameOrCompany').value,
+        cifNif: document.getElementById('clientCifNif').value,
+        address: document.getElementById('clientAddress').value,
+        // ... otros campos
+    };
+    clientes.push(nuevoCliente);
+    saveClients(); // Asumiendo que tienes una función para guardar
+    // ...cierra modal y refresca lista
+}
+
+// Al guardar edición de cliente, no cambias el id
+function guardarEdicionCliente(clienteEditado) {
+    // Busca por id y reemplaza los datos, excepto el id
+    const index = clientes.findIndex(c => c.id === clienteEditado.id);
+    if (index > -1) {
+        clientes[index] = { ...clienteEditado };
+    }
+    saveClients();
+    // ...cierra modal y refresca lista
+}
+
 });
