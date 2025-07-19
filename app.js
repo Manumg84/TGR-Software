@@ -3186,5 +3186,4 @@ function renderClientsTable(searchTerm = '', filterBy = 'nameOrCompany') {
     function hookEditableLines() {
         setTimeout(() =>
     
-  }
 });
