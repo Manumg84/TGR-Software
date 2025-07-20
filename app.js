@@ -1,3 +1,11 @@
+
+// ===========================================
+// APP FINAL - JS UNIFICADO CORREGIDO
+// Correcciones:
+// - Se asegura que todo el código se ejecute tras DOMContentLoaded
+// - Se evita la creación duplicada de tarjetas de ingresos
+// ===========================================
+document.addEventListener('DOMContentLoaded', function() {
 // ===========================================================
 // APP FINAL - JS UNIFICADO
 // Este archivo incluye todas las funcionalidades:
@@ -339,3 +347,5 @@ function actualizarDashboard() {
         tarjetas[2].querySelector('.card-text').textContent = sumaTotal.toFixed(2) + ' €';
     }
 }
+
+});
