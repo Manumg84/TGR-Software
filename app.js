@@ -1,4 +1,3 @@
-```javascript
 document.addEventListener('DOMContentLoaded', function() {
     // =================================================================================
     // 1. GLOBAL VARIABLES & DATA INITIALIZATION
