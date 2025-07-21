@@ -113,17 +113,21 @@ document.addEventListener('DOMContentLoaded', function() {
             clientsTableBody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">No se encontraron clientes.</td></tr>';
         } else {
             filteredClients.forEach(client => {
-                const row = clientsTableBody.insertRow();
-                // We use client.id which is the fixed, large number
-                row.innerHTML = `
-                    <td>${client.id}</td>
-                    <td><a href="#" class="text-decoration-none entity-link" data-type="client" data-id="${client.id}">${client.nameOrCompany}</a></td>
-                    <td>${client.cifNif}</td>
-                    <td>${client.phone1}</td>
-                    <td>${client.phone2}</td>
-                    <td>${client.email}</td>
-                `;
-            });
+    const row = clientsTableBody.insertRow();
+    // Utiliza las comillas invertidas ` para template literals
+    row.innerHTML = `
+      <td>${client.id}</td>
+      <td>
+        <a href="#" class="text-decoration-none entity-link" data-type="client" data-id="${client.id}">
+          ${client.nameOrCompany}
+        </a>
+      </td>
+      <td>${client.cifNif}</td>
+      <td>${client.phone1}</td>
+      <td>${client.phone2}</td>
+      <td>${client.email}</td>
+    `;
+});
         }
     }
     
