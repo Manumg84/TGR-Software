@@ -1,28 +1,48 @@
+//// Por bloques by Manumg84 ////
+
 <!DOCTYPE html>
 <html lang="es">
+
+<!-- ============================================================ -->
+<!-- INICIO DEL HEAD - Metadatos, Fuentes, Estilos e Iconografía -->
+<!-- ============================================================ -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Taller</title>
+
     <!-- Google Fonts - Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Estilos personalizados -->
     <link rel="stylesheet" href="style.css">
 </head>
+<!-- ============================================================ -->
+<!-- FIN DEL HEAD -->
+<!-- ============================================================ -->
 <body>
+    <!-- ============================================================ -->
+    <!-- INICIO DEL CONTENEDOR PRINCIPAL (Wrapper General)           -->
+    <!-- ============================================================ -->
     <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
+
+        <!-- ============================================================ -->
+        <!-- INICIO DEL SIDEBAR - Menú lateral                          -->
+        <!-- ============================================================ -->
         <nav id="sidebar">
             <div class="sidebar-header">
                 <i class="fas fa-tools icon"></i>
                 <span class="logo-name">TallerApp</span>
             </div>
-
             <ul class="nav-links list-unstyled">
                 <li>
                     <a href="#" class="nav-link active" data-target="dashboard" data-name="Dashboard" data-icon="fas fa-tachometer-alt">
@@ -30,841 +50,412 @@
                         <span class="link-name">Dashboard</span>
                     </a>
                 </li>
-                 <li>
+                <li>
                     <a href="#" class="nav-link" data-target="gestion" data-name="Gestión" data-icon="fas fa-tasks">
                         <i class="fas fa-tasks icon me-2"></i>
                         <span class="link-name">Gestión</span>
                     </a>
                 </li>
-                 <li>
-                    <a href="#" class="nav-link" data-target="ordenes_parent" data-name="Órdenes de trabajos" data-icon="fas fa-clipboard-list">
-                        <i class="fas fa-clipboard-list icon me-2"></i>
-                        <span class="link-name">Ordenes de trabajos</span>
-                    </a>
-                </li>
-                 <li>
-                    <a href="#" class="nav-link" data-target="settings" data-name="Configuración" data-icon="fas fa-cog">
-                        <i class="fas fa-cog icon me-2"></i>
-                        <span class="link-name">Configuración</span>
-                    </a>
-                </li>
             </ul>
-
-            <!-- Calendar Widget Column moved to sidebar -->
-            <div class="p-3">
-                <div class="dashboard-card calendar-widget sidebar-card" style="cursor: pointer;">
-                    <div class="card-body text-center p-0">
-                        <h5 class="card-title text-dark-emphasis mb-2">Fecha Actual</h5>
-                        <h3 class="display-6 text-primary fw-bold" id="currentDay"></h3>
-                        <p class="lead text-dark-emphasis mb-1" id="currentMonth"></p>
-                        <p class="lead text-dark-emphasis mb-2" id="currentYear"></p>
-                        <small class="text-muted">Haz clic para ver agenda</small>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Agenda Events Display Column moved to sidebar -->
-            <div class="p-3 pt-0">
-                <div class="dashboard-card agenda-display sidebar-card">
-                    <div class="card-header bg-white border-0 pb-0 pt-3">
-                        <h5 class="mb-0 text-dark-emphasis">Próximos Eventos</h5>
-                    </div>
-                    <ul class="list-group list-group-flush" id="agendaEventsList">
-                        <!-- Events will be dynamically loaded here by JavaScript -->
-                        <li class="list-group-item text-muted">No hay eventos próximos.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- User Profile moved to sidebar footer -->
-            <div id="sidebar-footer" class="mt-auto p-3 border-top">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <div class="position-relative">
-                        <i class="fas fa-bell fs-5 text-muted"></i>
-                        <span class="badge bg-danger rounded-circle position-absolute top-0 start-100 translate-middle p-1">
-                            <span class="visually-hidden">New alerts</span>
-                        </span>
-                    </div>
-                </div>
-                <div class="user-profile d-flex align-items-center">
-                    <img src="https://placehold.co/40x40/E8E8E8/999999?text=U" alt="User Avatar" class="rounded-circle me-2">
-                    <span class="fw-bold text-dark">John Doe</span>
-                    <i class="fas fa-chevron-down ms-2 text-muted"></i>
-                </div>
-            </div>
         </nav>
-        <!-- /#sidebar -->
-
-        <!-- Page Content Wrapper -->
+        <!-- ============================================================ -->
+        <!-- FIN DEL SIDEBAR                                            -->
+        <!-- ============================================================ -->
+        <!-- ============================================================ -->
+        <!-- INICIO DEL CONTENIDO PRINCIPAL (NAVBAR + MAIN + FOOTER)    -->
+        <!-- ============================================================ -->
         <div id="page-content-wrapper" class="d-flex flex-column flex-grow-1">
-            <!-- Top Navbar -->
+
+            <!-- ========================== TOP NAVBAR ========================== -->
+            <!-- Tarjetas de métricas: clientes, trabajos, beneficios, etc. -->
             <header id="top-navbar" class="p-3 bg-white border-bottom shadow-sm d-flex align-items-center justify-content-start">
                 <div class="d-flex w-100 justify-content-around align-items-center">
-                    <!-- Total Earnings Card -->
-                    <div class="dashboard-card primary-card text-white top-navbar-card mx-2">
-                        <div class="card-body d-flex align-items-center justify-content-between">
-                            <div class="d-flex flex-column text-nowrap overflow-hidden">
-                                <h5 class="card-title text-white-50 mb-0">Total Ganancias</h5>
-                                <p class="card-text text-white-50 mb-0"><small>Último Mes</small></p>
-                            </div>
-                            <div class="d-flex align-items-center flex-shrink-0">
-                                <h2 class="mb-0 fw-bold me-2">€12,345</h2>
-                                <i class="fas fa-dollar-sign fa-lg text-white-50"></i>
-                            </div>
+                    <div class="card shadow-sm border-start border-primary border-4" style="width: 15rem;">
+                        <div class="card-body">
+                            <h6 class="card-title text-primary">Clientes nuevos</h6>
+                            <p class="card-text fs-4 fw-bold" id="clientesNuevos">0</p>
                         </div>
                     </div>
-                    <!-- New Clients Card -->
-                    <div class="dashboard-card success-card text-white top-navbar-card mx-2">
-                        <div class="card-body d-flex align-items-center justify-content-between">
-                            <div class="d-flex flex-column text-nowrap overflow-hidden">
-                                <h5 class="card-title text-white-50 mb-0">Nuevos Clientes</h5>
-                                <p class="card-text text-white-50 mb-0"><small>Este Mes</small></p>
-                            </div>
-                            <div class="d-flex align-items-center flex-shrink-0">
-                                <h2 class="mb-0 fw-bold me-2">75</h2>
-                                <i class="fas fa-user-plus fa-lg text-white-50"></i>
-                            </div>
+                    <div class="card shadow-sm border-start border-success border-4" style="width: 15rem;">
+                        <div class="card-body">
+                            <h6 class="card-title text-success">Órdenes activas</h6>
+                            <p class="card-text fs-4 fw-bold" id="ordenesActivas">0</p>
                         </div>
                     </div>
-                    <!-- Pending Repairs Card -->
-                    <div class="dashboard-card warning-card text-white top-navbar-card mx-2">
-                        <div class="card-body d-flex align-items-center justify-content-between">
-                            <div class="d-flex flex-column text-nowrap overflow-hidden">
-                                <h5 class="card-title text-white-50 mb-0">Reparaciones Pendientes</h5>
-                                <p class="card-text text-white-50 mb-0"><small>Activas</small></p>
-                            </div>
-                            <div class="d-flex align-items-center flex-shrink-0">
-                                <h2 class="mb-0 fw-bold me-2">18</h2>
-                                <i class="fas fa-wrench fa-lg text-white-50"></i>
-                            </div>
+                    <div class="card shadow-sm border-start border-warning border-4" style="width: 15rem;">
+                        <div class="card-body">
+                            <h6 class="card-title text-warning">Presupuestos este mes</h6>
+                            <p class="card-text fs-4 fw-bold" id="presupuestosMes">0</p>
+                        </div>
+                    </div>
+                    <div class="card shadow-sm border-start border-info border-4" style="width: 15rem;">
+                        <div class="card-body">
+                            <h6 class="card-title text-info">Ingresos estimados (€)</h6>
+                            <p class="card-text fs-4 fw-bold" id="ingresosEstimados">0</p>
                         </div>
                     </div>
                 </div>
             </header>
-            <!-- /#top-navbar -->
+            <!-- ======================== FIN TOP NAVBAR ======================== -->
 
-            <!-- Main Content -->
+            <!-- ======================== MAIN CONTENT ========================== -->
+            <!-- Incluye tabs, secciones dinámicas, actividad reciente, etc. -->
             <main id="main-content" class="flex-grow-1 p-4">
-                <div class="d-flex justify-content-between align-items-end mb-3">
-                    <!-- Tab navigation -->
-                    <ul class="nav nav-tabs" id="mainContentTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard-pane" type="button" role="tab" aria-controls="dashboard-pane" aria-selected="true">
-                                <span class="tab-label"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</span>
-                            </button>
-                        </li>
-                        <!-- Other tabs will be dynamically added here by JS -->
-                    </ul>
-                    <!-- New Messaging Button -->
-                    <button class="btn btn-primary btn-sm ms-auto" id="openChatBtn">
-                        <i class="fas fa-comments me-2"></i> Mensajes
-                    </button>
-                </div>
-
-                <!-- Tab content -->
-                <div class="tab-content" id="mainContentTabContent">
-                    <div class="tab-pane fade show active" id="dashboard-pane" role="tabpanel" aria-labelledby="dashboard-tab">
-                        <!-- Recent Activity Table -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="dashboard-card">
-                                    <div class="card-header bg-white border-0 pb-0 pt-3">
-                                        <h5 class="mb-0 text-dark-emphasis">Actividad Reciente</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">#</th>
-                                                        <th scope="col">Cliente</th>
-                                                        <th scope="col">Servicio</th>
-                                                        <th scope="col">Estado</th>
-                                                        <th scope="col">Fecha</th>
-                                                        <th scope="col">Total</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="recentActivityTableBody">
-                                                    <!-- Activities will be dynamically loaded here by JavaScript -->
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                <ul class="nav nav-tabs" id="mainTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">Dashboard</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="gestion-tab" data-bs-toggle="tab" data-bs-target="#gestion" type="button" role="tab" aria-controls="gestion" aria-selected="false">Gestión</button>
+                    </li>
+                </ul>
+                <div class="tab-content mt-3" id="mainTabContent">
+                    <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                        <h3>Bienvenido al Panel de Control</h3>
+                        <p>Aquí puedes visualizar un resumen de la actividad del taller.</p>
+                        <div class="table-responsive mt-4">
+                            <table class="table table-bordered table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>ID Cliente</th>
+                                        <th>Nombre</th>
+                                        <th>Total Gastado (€)</th>
+                                        <th>Último Trabajo</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaResumenClientes">
+                                    <!-- Generado dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="gestion" role="tabpanel" aria-labelledby="gestion-tab">
+                        <h3>Gestión de Operaciones</h3>
+                        <p>Sección para controlar órdenes de trabajo, clientes, presupuestos y más.</p>
+                        <!-- Aquí se integrarán las tarjetas de acceso a modales -->
+                        <div class="row g-4 mt-4">
+                            <div class="col-md-3">
+                                <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#modalCliente"><i class="fas fa-user-plus me-2"></i>Nuevo Cliente</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-outline-secondary w-100" data-bs-toggle="modal" data-bs-target="#modalProveedor"><i class="fas fa-truck me-2"></i>Nuevo Proveedor</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-outline-success w-100" data-bs-toggle="modal" data-bs-target="#modalTrabajo"><i class="fas fa-tools me-2"></i>Nueva Orden</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-outline-warning w-100" data-bs-toggle="modal" data-bs-target="#modalPresupuesto"><i class="fas fa-file-invoice-dollar me-2"></i>Presupuesto</button>
                             </div>
                         </div>
                     </div>
-                    <!-- Dummy Content Sections are now dynamically loaded into tabs -->
                 </div>
             </main>
-            <!-- /#main-content -->
-        </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-    <!-- /#wrapper -->
+            <!-- ====================== FIN MAIN CONTENT ======================== -->
 
-    <!-- MODALS SECTION -->
-    
-    <!-- Client Management Modal -->
-    <div class="modal fade" id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg dashboard-card">
-                <div class="modal-header bg-white border-0 pb-0">
-                    <h5 class="modal-title text-dark-emphasis" id="clientModalLabel"><i class="fas fa-user me-2 text-primary"></i> Gestión de Cliente</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- ============================================================ -->
+        <!-- FIN DEL CONTENIDO PRINCIPAL                                 -->
+        <!-- ============================================================ -->
+<!-- ============================================================ -->
+<!-- INICIO DE MODALES - Ventanas emergentes de gestión           -->
+<!-- ============================================================ -->
+
+<!-- ================= MODAL: Añadir Cliente ================= -->
+<div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="modalClienteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="formCliente">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalClienteLabel">Nuevo Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
-                <div class="modal-body pt-0">
-                    <ul class="nav nav-tabs" id="client-modal-tabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="client-details-tab" data-bs-toggle="tab" data-bs-target="#client-details-pane" type="button" role="tab">Datos del Cliente</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="client-history-tab" data-bs-toggle="tab" data-bs-target="#client-history-pane" type="button" role="tab" disabled>Historial</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="client-modal-tab-content">
-                        <!-- Client Details Pane -->
-                        <div class="tab-pane fade show active" id="client-details-pane" role="tabpanel">
-                             <form id="clientForm" class="p-3 border-top-0 border">
-                                <input type="hidden" id="clientId">
-                                <input type="hidden" id="clientMode">
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="clientIdDisplay" class="form-label text-muted">ID Cliente</label>
-                                        <input type="text" class="form-control" id="clientIdDisplay" readonly>
-                                    </div>
-                                    <div class="col-md-8 mb-3">
-                                        <label for="clientNameOrCompany" class="form-label text-muted">Nombre o Empresa</label>
-                                        <input type="text" class="form-control" id="clientNameOrCompany" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="clientCifNif" class="form-label text-muted">CIF/NIF</label>
-                                        <input type="text" class="form-control" id="clientCifNif" required>
-                                    </div>
-                                    <div class="col-md-8 mb-3">
-                                        <label for="clientAddress" class="form-label text-muted">Dirección</label>
-                                        <input type="text" class="form-control" id="clientAddress" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="clientCity" class="form-label text-muted">Localidad</label>
-                                        <input type="text" class="form-control" id="clientCity" required>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="clientProvince" class="form-label text-muted">Provincia</label>
-                                        <input type="text" class="form-control" id="clientProvince" required>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="clientPostalCode" class="form-label text-muted">Código Postal</label>
-                                        <input type="text" class="form-control" id="clientPostalCode" pattern="[0-9]{5}" title="Debe ser un código postal de 5 dígitos numéricos" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="clientPhone1" class="form-label text-muted">Teléfono 1</label>
-                                        <input type="text" class="form-control" id="clientPhone1" pattern="[0-9]{9}" title="Debe ser un número de teléfono de 9 dígitos numéricos" required>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="clientPhone2" class="form-label text-muted">Teléfono 2 (Opcional)</label>
-                                        <input type="text" class="form-control" id="clientPhone2" pattern="[0-9]{9}" title="Debe ser un número de teléfono de 9 dígitos numéricos">
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="clientEmail" class="form-label text-muted">Email</label>
-                                        <input type="email" class="form-control" id="clientEmail" required>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="clientObservations" class="form-label text-muted">Observaciones</label>
-                                    <textarea class="form-control" id="clientObservations" rows="2"></textarea>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <button type="button" class="btn btn-danger me-auto" id="clientModalDeleteBtn" style="display: none;"><i class="fas fa-trash me-2"></i> Borrar Cliente</button>
-                                    <button class="btn btn-primary" id="clientModalSubmitBtn"><i class="fas fa-plus me-2"></i> Crear Cliente</button>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- Client History Pane -->
-                        <div class="tab-pane fade" id="client-history-pane" role="tabpanel">
-                            <div class="p-3 border-top-0 border">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h6 class="mb-0">Documentos Asociados</h6>
-                                    <select class="form-select form-select-sm w-auto" id="clientHistoryFilter">
-                                        <option value="ordenes_trabajo">Órdenes de Trabajo</option>
-                                        <option value="presupuestos">Presupuestos</option>
-                                        <option value="albaranes">Albaranes</option>
-                                    </select>
-                                </div>
-                                <div class="table-responsive" style="max-height: 300px;">
-                                    <table class="table table-sm table-hover">
-                                        <thead id="clientHistoryTableHead">
-                                            <!-- Header will be generated by JS -->
-                                        </thead>
-                                        <tbody id="clientHistoryTableBody">
-                                            <!-- Content will be generated by JS -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">ID Cliente (Generado automáticamente)</label>
+                        <input type="text" class="form-control" id="idCliente" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombreCliente" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreCliente" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefonoCliente" class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" id="telefonoCliente">
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailCliente" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="emailCliente">
+                    </div>
+                    <div class="mb-3">
+                        <label for="direccionCliente" class="form-label">Dirección</label>
+                        <input type="text" class="form-control" id="direccionCliente">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Historial</label>
+                        <ul id="historialCliente" class="list-group small">
+                            <!-- Se llenará dinámicamente con órdenes, presupuestos y albaranes -->
+                        </ul>
                     </div>
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+                </div>
+            </form>
         </div>
     </div>
-    
-    <!-- Supplier Management Modal -->
-    <div class="modal fade" id="proveedorModal" tabindex="-1" aria-labelledby="proveedorModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg dashboard-card">
-                <div class="modal-header bg-white border-0 pb-0">
-                    <h5 class="modal-title text-dark-emphasis" id="proveedorModalLabel"><i class="fas fa-truck me-2 text-primary"></i> Gestión de Proveedor</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<!-- =============== FIN MODAL: Añadir Cliente =============== -->
+
+<!-- ================= MODAL: Añadir Proveedor ================= -->
+<div class="modal fade" id="modalProveedor" tabindex="-1" aria-labelledby="modalProveedorLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="formProveedor">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalProveedorLabel">Nuevo Proveedor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
-                <div class="modal-body pt-0">
-                     <ul class="nav nav-tabs" id="proveedor-modal-tabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="proveedor-details-tab" data-bs-toggle="tab" data-bs-target="#proveedor-details-pane" type="button" role="tab">Datos del Proveedor</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="proveedor-history-tab" data-bs-toggle="tab" data-bs-target="#proveedor-history-pane" type="button" role="tab" disabled>Historial de Albaranes</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="proveedor-modal-tab-content">
-                        <!-- Supplier Details Pane -->
-                        <div class="tab-pane fade show active" id="proveedor-details-pane" role="tabpanel">
-                            <form id="proveedorForm" class="p-3 border-top-0 border">
-                                <input type="hidden" id="proveedorId">
-                                <input type="hidden" id="proveedorMode">
-                                <div class="row">
-                                     <div class="col-md-4 mb-3">
-                                        <label for="proveedorIdDisplay" class="form-label text-muted">ID Proveedor</label>
-                                        <input type="text" class="form-control" id="proveedorIdDisplay" readonly>
-                                    </div>
-                                    <div class="col-md-8 mb-3">
-                                        <label for="proveedorNameOrCompany" class="form-label text-muted">Nombre o Empresa</label>
-                                        <input type="text" class="form-control" id="proveedorNameOrCompany" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="proveedorCifNif" class="form-label text-muted">CIF/NIF</label>
-                                        <input type="text" class="form-control" id="proveedorCifNif" required>
-                                    </div>
-                                    <div class="col-md-8 mb-3">
-                                        <label for="proveedorAddress" class="form-label text-muted">Dirección</label>
-                                        <input type="text" class="form-control" id="proveedorAddress" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="proveedorCity" class="form-label text-muted">Localidad</label>
-                                        <input type="text" class="form-control" id="proveedorCity" required>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="proveedorProvince" class="form-label text-muted">Provincia</label>
-                                        <input type="text" class="form-control" id="proveedorProvince" required>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="proveedorPostalCode" class="form-label text-muted">Código Postal</label>
-                                        <input type="text" class="form-control" id="proveedorPostalCode" pattern="[0-9]{5}" title="Debe ser un código postal de 5 dígitos numéricos" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="proveedorPhone1" class="form-label text-muted">Teléfono 1</label>
-                                        <input type="text" class="form-control" id="proveedorPhone1" pattern="[0-9]{9}" title="Debe ser un número de teléfono de 9 dígitos numéricos" required>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="proveedorPhone2" class="form-label text-muted">Teléfono 2 (Opcional)</label>
-                                        <input type="text" class="form-control" id="proveedorPhone2" pattern="[0-9]{9}" title="Debe ser un número de teléfono de 9 dígitos numéricos">
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="proveedorEmail" class="form-label text-muted">Email</label>
-                                        <input type="email" class="form-control" id="proveedorEmail" required>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="proveedorObservations" class="form-label text-muted">Observaciones</label>
-                                    <textarea class="form-control" id="proveedorObservations" rows="2"></textarea>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <button type="button" class="btn btn-danger me-auto" id="proveedorModalDeleteBtn" style="display: none;"><i class="fas fa-trash me-2"></i> Borrar Proveedor</button>
-                                    <button class="btn btn-primary" id="proveedorModalSubmitBtn"><i class="fas fa-plus me-2"></i> Crear Proveedor</button>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- Supplier History Pane -->
-                        <div class="tab-pane fade" id="proveedor-history-pane" role="tabpanel">
-                            <div class="p-3 border-top-0 border">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h6 class="mb-0">Albaranes de Proveedor</h6>
-                                    <input type="date" class="form-control form-control-sm w-auto" id="proveedorHistoryDateFilter">
-                                </div>
-                                <div class="table-responsive" style="max-height: 300px;">
-                                    <table class="table table-sm table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Nº Albarán</th>
-                                                <th>Fecha</th>
-                                                <th>En Orden de Trabajo</th>
-                                                <th>Importe Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="proveedorHistoryTableBody">
-                                            <!-- Content will be generated by JS -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">ID Proveedor (Generado automáticamente)</label>
+                        <input type="text" class="form-control" id="idProveedor" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombreProveedor" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreProveedor" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefonoProveedor" class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" id="telefonoProveedor">
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailProveedor" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="emailProveedor">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Historial de Albaranes</label>
+                        <ul id="historialAlbaranesProveedor" class="list-group small">
+                            <!-- Generado dinámicamente -->
+                        </ul>
                     </div>
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Proveedor</button>
+                </div>
+            </form>
         </div>
     </div>
-    
-    <!-- Presupuesto Management Modal -->
-    <div class="modal fade" id="presupuestoModal" tabindex="-1" aria-labelledby="presupuestoModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg dashboard-card">
-                <div class="modal-header bg-white border-0 pb-0">
-                    <h5 class="modal-title text-dark-emphasis" id="presupuestoModalLabel"><i class="fas fa-file-invoice-dollar me-2 text-primary"></i> Gestión de Presupuesto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<!-- =============== FIN MODAL: Añadir Proveedor =============== -->
+<!-- ================= MODAL: Nueva Orden de Trabajo ================= -->
+<div class="modal fade" id="modalOrden" tabindex="-1" aria-labelledby="modalOrdenLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form id="formOrden">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalOrdenLabel">Nueva Orden de Trabajo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
-                <div class="modal-body pt-0">
-                    <form id="presupuestoForm" class="p-3 border rounded">
-                        <input type="hidden" id="presupuestoId">
-                        <input type="hidden" id="presupuestoMode">
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="presupuestoNumero" class="form-label text-muted">N° Presupuesto</label>
-                                <input type="text" class="form-control" id="presupuestoNumero" readonly>
-                            </div>
-                            <div class="col-md-8 mb-3">
-                                <label for="presupuestoClienteSearch" class="form-label text-muted">Cliente</label>
-                                <div class="autocomplete-container">
-                                    <input type="text" class="form-control" id="presupuestoClienteSearch" placeholder="Buscar cliente..." required>
-                                    <input type="hidden" id="presupuestoClienteId" name="presupuestoClienteId">
-                                    <div class="autocomplete-suggestions" id="presupuestoClienteSuggestions"></div>
-                                </div>
-                            </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">ID Orden (Auto)</label>
+                            <input type="text" class="form-control" id="idOrden" disabled>
                         </div>
-                        <div class="row">
-                            <div class="col-md-8 mb-3">
-                                <label for="presupuestoConcepto" class="form-label text-muted">Concepto</label>
-                                <input type="text" class="form-control" id="presupuestoConcepto" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="presupuestoNumSolicitud" class="form-label text-muted">N° Solicitud</label>
-                                <input type="text" class="form-control" id="presupuestoNumSolicitud">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="presupuestoTexto" class="form-label text-muted">Texto del Presupuesto</label>
-                            <textarea class="form-control" id="presupuestoTexto" rows="4"></textarea>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 mb-3 ms-auto">
-                                <label for="presupuestoImporte" class="form-label text-muted">Importe Total</label>
-                                <div class="input-group">
-                                    <input type="number" class="form-control" id="presupuestoImporte" step="0.01" min="0" required>
-                                    <span class="input-group-text">€</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-danger me-auto" id="presupuestoModalDeleteBtn" style="display: none;"><i class="fas fa-trash me-2"></i> Borrar</button>
-                            <button type="button" class="btn btn-success" id="presupuestoToOrdenBtn" style="display: none;"><i class="fas fa-file-alt me-2"></i> Crear Orden</button>
-                            <button class="btn btn-primary" id="presupuestoModalSubmitBtn"><i class="fas fa-plus me-2"></i> Crear</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Orden de Trabajo Management Modal -->
-    <div class="modal fade" id="ordenTrabajoModal" tabindex="-1" aria-labelledby="ordenTrabajoModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg dashboard-card">
-                <div class="modal-header bg-white border-0 pb-0">
-                    <h5 class="modal-title text-dark-emphasis" id="ordenTrabajoModalLabel"><i class="fas fa-file-alt me-2 text-primary"></i> Gestión de Orden de Trabajo</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body pt-0">
-                    <form id="ordenTrabajoForm" class="p-3 border rounded">
-                        <input type="hidden" id="ordenTrabajoId">
-                        <input type="hidden" id="ordenTrabajoMode">
-                        <input type="hidden" id="ordenTrabajoPresupuestoId">
-                        <input type="hidden" id="ordenTrabajoAlbaranId">
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="ordenTrabajoNumero" class="form-label text-muted">N° Orden</label>
-                                <input type="text" class="form-control" id="ordenTrabajoNumero" readonly>
-                            </div>
-                            <div class="col-md-8 mb-3">
-                                <label for="ordenTrabajoClienteSearch" class="form-label text-muted">Cliente</label>
-                                <div class="autocomplete-container">
-                                    <input type="text" class="form-control" id="ordenTrabajoClienteSearch" placeholder="Buscar cliente..." required>
-                                    <input type="hidden" id="ordenTrabajoClienteId" name="ordenTrabajoClienteId">
-                                    <div class="autocomplete-suggestions" id="ordenTrabajoClienteSuggestions"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-md-6 mb-3">
-                                <label for="ordenTrabajoConcepto" class="form-label text-muted">Concepto</label>
-                                <input type="text" class="form-control" id="ordenTrabajoConcepto" required>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="ordenTrabajoEstado" class="form-label text-muted">Estado</label>
-                                <select class="form-select" id="ordenTrabajoEstado" required>
-                                    <!-- Options will be dynamically loaded here by JavaScript -->
-                                </select>
-                            </div>
-                            <div class="col-md-3 mb-3" id="ordenTrabajoLinksContainer">
-                                <label class="form-label text-muted">Documentos Vinculados</label>
-                                <div>
-                                    <button type="button" class="btn btn-sm btn-outline-info" id="ordenVerPresupuestoBtn" style="display: none;">Ver Presupuesto</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" id="ordenVerAlbaranBtn" style="display: none;">Ver Albarán</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="ordenTrabajoObservaciones" class="form-label text-muted">Observaciones</label>
-                            <textarea class="form-control" id="ordenTrabajoObservaciones" rows="2"></textarea>
-                        </div>
-
-                        <!-- Horas de Trabajo Table -->
-                        <hr class="my-4">
-                        <h6 class="mb-3 text-dark-emphasis">Líneas de Horas de Trabajo</h6>
-                        <div class="table-responsive mb-3">
-                            <table class="table table-bordered table-sm" id="workHoursTable">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th style="width: 15%;">Operario</th>
-                                        <th style="width: 15%;">Categoría</th>
-                                        <th style="width: 15%;">Tipo</th>
-                                        <th style="width: 10%;">Fecha</th>
-                                        <th style="width: 20%;">Concepto</th>
-                                        <th style="width: 7%;">Horas</th>
-                                        <th style="width: 10%;">Importe</th>
-                                        <th style="width: 5%;"></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="workHoursTableBody"></tbody>
-                            </table>
-                        </div>
-                        <button type="button" class="btn btn-sm btn-outline-primary" id="addWorkHourRowBtn"><i class="fas fa-plus me-1"></i> Añadir Línea de Horas</button>
-
-                        <!-- Materiales Table -->
-                        <hr class="my-4">
-                        <h6 class="mb-3 text-dark-emphasis">Líneas de Materiales</h6>
-                        <div class="table-responsive mb-3">
-                            <table class="table table-bordered table-sm" id="materialsTable">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>Proveedor</th>
-                                        <th>Albarán Prov.</th>
-                                        <th>Fecha</th>
-                                        <th>Concepto</th>
-                                        <th>Cant.</th>
-                                        <th>€/ud</th>
-                                        <th>Dto %</th>
-                                        <th>€ Dto</th>
-                                        <th>Total</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="materialsTableBody"></tbody>
-                            </table>
-                        </div>
-                        <button type="button" class="btn btn-sm btn-outline-primary" id="addMaterialRowBtn"><i class="fas fa-plus me-1"></i> Añadir Línea de Material</button>
-
-                        <div class="row mt-4">
-                            <div class="col-md-4 mb-3 ms-auto">
-                                <label for="ordenTrabajoImporte" class="form-label text-muted">Importe Total</label>
-                                <div class="input-group">
-                                    <input type="number" class="form-control" id="ordenTrabajoImporte" step="0.01" min="0" required readonly>
-                                    <span class="input-group-text">€</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-danger me-auto" id="ordenTrabajoModalDeleteBtn" style="display: none;"><i class="fas fa-trash me-2"></i> Borrar</button>
-                            <button type="button" class="btn btn-secondary" id="ordenToAlbaranBtn" style="display: none;"><i class="fas fa-receipt me-2"></i> Crear Albarán</button>
-                            <button class="btn btn-primary" id="ordenTrabajoModalSubmitBtn"><i class="fas fa-plus me-2"></i> Crear</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Albaran Modal -->
-    <div class="modal fade" id="albaranModal" tabindex="-1" aria-labelledby="albaranModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg dashboard-card">
-                <div class="modal-header bg-white border-0 pb-0">
-                    <h5 class="modal-title text-dark-emphasis" id="albaranModalLabel"><i class="fas fa-receipt me-2 text-primary"></i> Albarán de Cliente</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body pt-2">
-                    <div id="albaranContent" class="p-3 border rounded">
-                        <!-- Content will be generated by JS -->
-                    </div>
-                     <div class="d-flex justify-content-end mt-3">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary ms-2" id="printAlbaranBtn"><i class="fas fa-print me-2"></i> Imprimir</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Other Modals: User, WorkStatus, Category, etc. remain mostly unchanged but are included for completeness -->
-
-    <!-- User Management Modal -->
-    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg dashboard-card">
-                <div class="modal-header bg-white border-0 pb-0">
-                    <h5 class="modal-title text-dark-emphasis" id="userModalLabel"><i class="fas fa-user-plus me-2 text-primary"></i> Gestión de Usuario</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body pt-0">
-                    <form id="userForm" class="p-3 border rounded bg-light-subtle">
-                        <input type="hidden" id="userIdInput">
-                        <input type="hidden" id="userMode">
-                        <div class="mb-3">
-                            <label for="userName" class="form-label text-muted">Nombre</label>
-                            <input type="text" class="form-control" id="userName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="userLevel" class="form-label text-muted">Nivel de Usuario</label>
-                            <select class="form-select" id="userLevel" required>
-                                <option value="">Selecciona un nivel</option>
+                        <div class="col-md-6 mb-3">
+                            <label for="clienteOrden" class="form-label">Cliente</label>
+                            <select class="form-select" id="clienteOrden">
+                                <option disabled selected>Seleccionar cliente</option>
                             </select>
                         </div>
-                        <div class="mb-3">
-                            <label for="userPassword" class="form-label text-muted">Contraseña</label>
-                            <input type="password" class="form-control" id="userPassword" placeholder="********" autocomplete="new-password">
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100" id="userModalSubmitBtn"><i class="fas fa-save me-2"></i> Guardar Usuario</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Work Status Management Modal -->
-    <div class="modal fade" id="workStatusModal" tabindex="-1" aria-labelledby="workStatusModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg dashboard-card">
-                <div class="modal-header bg-white border-0 pb-0">
-                    <h5 class="modal-title text-dark-emphasis" id="workStatusModalLabel"><i class="fas fa-clipboard-check me-2 text-primary"></i> Gestión de Estados de Trabajo</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body pt-0">
-                    <form id="workStatusForm" class="p-3 border rounded bg-light-subtle">
-                        <input type="hidden" id="workStatusId">
-                        <input type="hidden" id="workStatusMode">
-                        <div class="mb-3">
-                            <label for="workStatusName" class="form-label text-muted">Nombre del Estado</label>
-                            <input type="text" class="form-control" id="workStatusName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="workStatusDescription" class="form-label text-muted">Descripción (opcional)</label>
-                            <textarea class="form-control" id="workStatusDescription" rows="3"></textarea>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-danger me-auto" id="workStatusModalDeleteBtn" style="display: none;"><i class="fas fa-trash me-2"></i> Borrar Estado</button>
-                            <button type="submit" class="btn btn-primary" id="workStatusModalSubmitBtn"><i class="fas fa-plus me-2"></i> Añadir Estado</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Operator Management Modal -->
-    <div class="modal fade" id="operarioModal" tabindex="-1" aria-labelledby="operarioModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg dashboard-card">
-                <div class="modal-header bg-white border-0 pb-0">
-                    <h5 class="modal-title text-dark-emphasis" id="operarioModalLabel"><i class="fas fa-user-cog me-2 text-primary"></i> Gestión de Operario</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body pt-0">
-                    <form id="operarioForm" class="p-3 border rounded bg-light-subtle">
-                        <input type="hidden" id="operarioId">
-                        <input type="hidden" id="operarioMode">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="operarioFullName" class="form-label text-muted">Nombre Completo</label>
-                                <input type="text" class="form-control" id="operarioFullName" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="operarioDniNie" class="form-label text-muted">DNI/NIE</label>
-                                <input type="text" class="form-control" id="operarioDniNie" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="operarioPosition" class="form-label text-muted">Cargo</label>
-                                <input type="text" class="form-control" id="operarioPosition" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="operarioHireDate" class="form-label text-muted">Fecha Contratación</label>
-                                <input type="date" class="form-control" id="operarioHireDate" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="operarioPhone" class="form-label text-muted">Teléfono</label>
-                                <input type="text" class="form-control" id="operarioPhone" pattern="[0-9]{9}" title="Debe ser un número de teléfono de 9 dígitos numéricos" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="operarioEmail" class="form-label text-muted">Email</label>
-                                <input type="email" class="form-control" id="operarioEmail" required>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <label for="operarioObservations" class="form-label text-muted">Observaciones</label>
-                            <textarea class="form-control" id="operarioObservations" rows="3"></textarea>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-danger me-auto" id="operarioModalDeleteBtn" style="display: none;"><i class="fas fa-trash me-2"></i> Borrar Operario</button>
-                            <button class="btn btn-primary" id="operarioModalSubmitBtn"><i class="fas fa-plus me-2"></i> Crear Operario</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Category Management Modal -->
-    <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg dashboard-card">
-                <div class="modal-header bg-white border-0 pb-0">
-                    <h5 class="modal-title text-dark-emphasis" id="categoryModalLabel"><i class="fas fa-tags me-2 text-primary"></i> Gestión de Categoría</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body pt-0">
-                    <form id="categoryForm" class="p-3 border rounded bg-light-subtle">
-                        <input type="hidden" id="categoryId">
-                        <input type="hidden" id="categoryMode">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="categoryName" class="form-label text-muted">Nombre de la Categoría</label>
-                                <input type="text" class="form-control" id="categoryName" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="categoryCode" class="form-label text-muted">Código</label>
-                                <input type="text" class="form-control" id="categoryCode" required>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <label for="categoryObservations" class="form-label text-muted">Observaciones</label>
-                            <textarea class="form-control" id="categoryObservations" rows="3"></textarea>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-danger me-auto" id="categoryModalDeleteBtn" style="display: none;"><i class="fas fa-trash me-2"></i> Borrar Categoría</button>
-                            <button class="btn btn-primary ms-2" id="categoryModalSubmitBtn"><i class="fas fa-plus me-2"></i> Crear Categoría</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Agenda Modal -->
-    <div class="modal fade" id="agendaModal" tabindex="-1" aria-labelledby="agendaModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg dashboard-card">
-                <div class="modal-header bg-white border-0 pb-0">
-                    <h5 class="modal-title text-dark-emphasis" id="agendaModalLabel"><i class="fas fa-calendar-check me-2 text-primary"></i> Mi Agenda</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body pt-0">
-                    <form id="eventForm" class="mb-4 p-3 border rounded bg-light-subtle">
-                        <h6 class="mb-3 text-dark-emphasis">Añadir Nuevo Evento/Nota</h6>
-                        <div class="mb-3">
-                            <label for="eventDate" class="form-label text-muted">Fecha</label>
-                            <input type="date" class="form-control" id="eventDate" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="eventTime" class="form-label text-muted">Hora (opcional)</label>
-                            <input type="time" class="form-control" id="eventTime">
-                        </div>
-                        <div class="mb-3">
-                            <label for="eventDescription" class="form-label text-muted">Descripción</label>
-                            <textarea class="form-control" id="eventDescription" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100"><i class="fas fa-plus me-2"></i> Añadir Evento</button>
-                    </form>
-                    <hr>
-                    <h6 class="text-dark-emphasis">Eventos Programados</h6>
-                    <div id="eventsContainer">
-                        <ul class="list-group" id="modalEventsList">
-                            <!-- Dynamic events loaded here by JavaScript -->
-                            <li class="list-group-item text-muted">No hay eventos programados.</li>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcionOrden" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="descripcionOrden" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaOrden" class="form-label">Fecha estimada</label>
+                        <input type="date" class="form-control" id="fechaOrden">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Presupuestos asociados</label>
+                        <ul id="presupuestosAsociados" class="list-group small">
+                            <!-- Dinámico -->
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Message Modal -->
-    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg dashboard-card">
-                <div class="modal-header bg-white border-0 pb-0">
-                    <h5 class="modal-title text-dark-emphasis" id="messageModalLabel"><i class="fas fa-comments me-2 text-primary"></i> Mensajes</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-0 d-flex" style="height: 60vh; background-color: #ffffff !important;"> <!-- Flex container for chat layout -->
-                    <!-- Chat Users Sidebar -->
-                    <div class="d-flex flex-column border-end bg-light-subtle" style="width: 250px; flex-shrink: 0;">
-                        <div class="p-3 border-bottom">
-                            <h6 class="mb-0 text-dark-emphasis">Usuarios Disponibles</h6>
-                        </div>
-                        <ul class="list-group list-group-flush flex-grow-1 overflow-auto" id="chatUsersList">
-                            <!-- User list dynamically loaded here -->
-                        </ul>
-                    </div>
-                    <!-- Chat Window -->
-                    <div class="d-flex flex-column flex-grow-1">
-                        <div class="p-3 border-bottom bg-light-subtle">
-                            <h6 class="mb-0 text-dark-emphasis" id="chatPartnerName">Selecciona un usuario para chatear</h6>
-                        </div>
-                        <div class="chat-messages p-3 flex-grow-1 overflow-auto" id="chatMessagesContainer">
-                            <!-- Messages dynamically loaded here -->
-                            <div class="text-center text-muted mt-5" id="noChatSelectedMessage">
-                                <i class="fas fa-comment-dots fs-1 mb-3"></i>
-                                <p>¡Inicia una conversación!</p>
-                                <small>Selecciona un usuario de la lista de la izquierda para comenzar.</small>
-                            </div>
-                        </div>
-                        <div class="chat-input-area p-3 border-top bg-light-subtle" id="chatInputArea" style="display: none;">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="chatMessageInput" placeholder="Escribe tu mensaje..." aria-label="Escribe tu mensaje">
-                                <button class="btn btn-primary" type="button" id="sendChatMessageBtn"><i class="fas fa-paper-plane"></i></button>
-                            </div>
-                        </div>
+                    <div class="mb-3">
+                        <label class="form-label">Albarán generado</label>
+                        <p id="albaranAsociado" class="form-control-plaintext">No creado aún</p>
                     </div>
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Guardar Orden</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+<!-- =============== FIN MODAL: Nueva Orden de Trabajo =============== -->
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="app.js"></script>
-</body>
+<!-- ================= MODAL: Crear Presupuesto ================= -->
+<div class="modal fade" id="modalPresupuesto" tabindex="-1" aria-labelledby="modalPresupuestoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form id="formPresupuesto">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalPresupuestoLabel">Nuevo Presupuesto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">ID Presupuesto (Auto)</label>
+                            <input type="text" class="form-control" id="idPresupuesto" disabled>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="clientePresupuesto" class="form-label">Cliente</label>
+                            <select class="form-select" id="clientePresupuesto">
+                                <option selected disabled>Seleccionar cliente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="detallePresupuesto" class="form-label">Detalle</label>
+                        <textarea class="form-control" id="detallePresupuesto" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaPresupuesto" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="fechaPresupuesto">
+                    </div>
+                    <div class="mb-3">
+                        <label for="totalPresupuesto" class="form-label">Total estimado (€)</label>
+                        <input type="number" class="form-control" id="totalPresupuesto">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Guardar Presupuesto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- =============== FIN MODAL: Crear Presupuesto =============== -->
+
+<!-- ================= MODAL: Gestión de Usuarios ================= -->
+<div class="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="modalUsuarioLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <form id="formUsuario">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUsuarioLabel">Gestión de Usuarios</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="nombreUsuario" class="form-label">Nombre de usuario</label>
+                        <input type="text" class="form-control" id="nombreUsuario" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rolUsuario" class="form-label">Rol</label>
+                        <select class="form-select" id="rolUsuario">
+                            <option value="admin">Administrador</option>
+                            <option value="empleado">Empleado</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="claveUsuario" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="claveUsuario">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- =============== FIN MODAL: Gestión de Usuarios =============== -->
+
+<!-- ================= MODAL: Agenda y Cuadrante de Vacaciones ================= -->
+<div class="modal fade" id="modalAgenda" tabindex="-1" aria-labelledby="modalAgendaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <form id="formAgenda">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAgendaLabel">Agenda y Vacaciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="trabajadorAgenda" class="form-label">Seleccionar trabajador</label>
+                        <select class="form-select" id="trabajadorAgenda">
+                            <option selected disabled>Seleccionar</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipoEvento" class="form-label">Tipo de evento</label>
+                        <select class="form-select" id="tipoEvento">
+                            <option value="agenda">Agenda</option>
+                            <option value="vacaciones">Vacaciones</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="fechaInicio" class="form-label">Fecha de inicio</label>
+                            <input type="date" class="form-control" id="fechaInicio">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="fechaFin" class="form-label">Fecha de fin</label>
+                            <input type="date" class="form-control" id="fechaFin">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcionEvento" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="descripcionEvento" rows="3"></textarea>
+                    </div>
+
+                    <div class="mt-4">
+                        <h6>Calendario general</h6>
+                        <div id="calendarioVacaciones" class="border p-3 rounded bg-light">
+                            <!-- Calendario dinámico -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Guardar Evento</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- =============== FIN MODAL: Agenda y Cuadrante de Vacaciones =============== -->
+
+<!-- ============================================================ -->
+<!-- FIN DE MODALES                                               -->
+<!-- ============================================================ -->
+        <!-- ============================================================ -->
+        <!-- INICIO DE SCRIPTS Y CIERRE DEL DOCUMENTO                     -->
+        <!-- ============================================================ -->
+
+        <!-- Bootstrap Bundle con Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoZ3HUHU+F43pR4pqhTnK+62I95H59snj5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+        <!-- FontAwesome -->
+        <script src="https://kit.fontawesome.com/3d7c96eb3e.js" crossorigin="anonymous"></script>
+
+        <!-- Chart.js para gráficas -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- Luxon para fechas -->
+        <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
+
+        <!-- Tu script principal -->
+        <script src="app.js"></script>
+
+        <!-- ============================================================ -->
+        <!-- FIN DE SCRIPTS Y CIERRE DEL DOCUMENTO                        -->
+        <!-- ============================================================ -->
+    </body>
 </html>
