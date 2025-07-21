@@ -14,9 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const item = localStorage.getItem(key);
             return item ? JSON.parse(item) : defaultValue;
-        } catch (e) {
-            console.error(`Error parsing JSON from localStorage key "${key}":`, e);
-            return defaultValue;
+        } catch (e)
         
     };
     
