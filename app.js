@@ -10,12 +10,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Data Models & Storage ---
     // Function to safely parse JSON from localStorage
     const getFromStorage = (key, defaultValue = []) => {
-        try {
-            const item = localStorage.getItem(key);
-            return item ? JSON.parse(item) : defaultValue;
-        } catch (e)
-        
-    };
+    try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : defaultValue;
+    } catch (e) {
+        return defaultValue;
+    }
+};
     
     // Function to safely stringify and set JSON to localStorage
     const saveToStorage = (key, value) => {
