@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (e) {
             console.error(`Error parsing JSON from localStorage key "${key}":`, e);
             return defaultValue;
-        }
+        
     };
     
     // Function to safely stringify and set JSON to localStorage
