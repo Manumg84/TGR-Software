@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM cargado');
   // ...resto de tu código
 });
-
-document.addEventListener('DOMContentLoaded', function() {
     // =================================================================================
     // 1. GLOBAL VARIABLES & DATA INITIALIZATION
     // =================================================================================
